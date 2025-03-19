@@ -10,15 +10,13 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-interface PageProps {
-  params: {
-    id: string;
-  };
+type PageProps = {
+  params: Promise<{ id: string }>;
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default function InvoiceDetailPage({ params, searchParams }: PageProps) {
-  const invoiceId = params.id;
+export default async function InvoiceDetailPage({ params }: PageProps) {
+  const { id: invoiceId } = await params;
   
   return (
     <div className="space-y-6 max-w-5xl mx-auto font-sans">
