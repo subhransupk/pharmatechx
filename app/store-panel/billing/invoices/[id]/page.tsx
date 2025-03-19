@@ -10,7 +10,14 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-export default function InvoiceDetailPage({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: {
+    id: string;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default function InvoiceDetailPage({ params, searchParams }: PageProps) {
   const invoiceId = params.id;
   
   return (
