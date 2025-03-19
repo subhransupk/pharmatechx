@@ -5,9 +5,13 @@ import {
   CameraIcon
 } from "lucide-react";
 
-export default function EditMedicinePage({ params }: { params: { id: string } }) {
-  // In a real app, you would fetch the medicine data based on the ID
-  const medicineId = params.id;
+type PageProps = {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function EditMedicinePage({ params }: PageProps) {
+  const { id: medicineId } = await params;
   
   // Mock data for demonstration
   const medicine = {
