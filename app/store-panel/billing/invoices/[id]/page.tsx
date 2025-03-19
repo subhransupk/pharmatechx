@@ -12,11 +12,11 @@ import Link from "next/link";
 
 type PageProps = {
   params: Promise<{ id: string }>;
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function InvoiceDetailPage({ params }: PageProps) {
-  const { id: invoiceId } = await params;
+export default async function InvoiceDetailPage({ params, searchParams }: PageProps) {
+  const [{ id: invoiceId }, queryParams] = await Promise.all([params, searchParams]);
   
   return (
     <div className="space-y-6 max-w-5xl mx-auto font-sans">
