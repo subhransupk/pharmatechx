@@ -1,0 +1,5 @@
+[33mcommit e661e2654d2b553362c6718fbaa75854601dca58[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: subhransupk <your.email@example.com>
+Date:   Mon Mar 24 08:52:17 2025 +0530
+
+    feat: Add admin panel components and update project structure

@@ -42,7 +42,7 @@ export default function Header() {
             </div>
             <input
               type="search"
-              className="bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 transition-colors"
+              className="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 transition-colors"
               placeholder="Search medicines, orders..."
             />
           </div>
@@ -55,7 +55,7 @@ export default function Header() {
                 setShowNotifications(!showNotifications);
                 setShowProfile(false);
               }}
-              className="relative p-2 text-gray-500 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors"
+              className="relative p-2 text-gray-700 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors"
             >
               <BellIcon className="w-5 h-5" />
               <span className="absolute top-0 right-0 inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-primary-500 rounded-full">
@@ -85,7 +85,7 @@ export default function Header() {
                           {notification.time}
                         </span>
                       </div>
-                      <p className="text-xs text-gray-600 mt-1">
+                      <p className="text-xs text-gray-700 mt-1">
                         {notification.message}
                       </p>
                     </div>
@@ -111,7 +111,7 @@ export default function Header() {
               <div className="h-9 w-9 rounded-full bg-primary-100 flex items-center justify-center text-primary-700 font-medium">
                 VA
               </div>
-              <span className="text-sm font-medium text-gray-800 hidden md:block">
+              <span className="text-sm font-medium text-gray-900 hidden md:block">
                 Volter Anderson
               </span>
             </button>
@@ -120,20 +120,20 @@ export default function Header() {
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 z-10 border border-gray-100 overflow-hidden">
                 <a
                   href="#"
-                  className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                  className="block px-4 py-2.5 text-sm text-gray-900 hover:bg-gray-50 transition-colors"
                 >
                   Your Profile
                 </a>
                 <a
                   href="#"
-                  className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                  className="block px-4 py-2.5 text-sm text-gray-900 hover:bg-gray-50 transition-colors"
                 >
                   Settings
                 </a>
                 <div className="border-t border-gray-100 my-1"></div>
                 <a
                   href="#"
-                  className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                  className="block px-4 py-2.5 text-sm text-gray-900 hover:bg-gray-50 transition-colors"
                 >
                   Sign out
                 </a>

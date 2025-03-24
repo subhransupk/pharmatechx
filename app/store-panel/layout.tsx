@@ -13,7 +13,7 @@ export default function StoreLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen bg-dashboard font-sans">
+    <div className="flex h-screen bg-dashboard font-sans text-gray-900">
       <Sidebar />
       <div className="flex flex-col flex-1 overflow-hidden">
         <Header />
