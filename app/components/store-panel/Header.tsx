@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { BellIcon, SearchIcon, UserIcon, MenuIcon } from "lucide-react";
-import { cn } from "@/app/lib/utils";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
   const [showNotifications, setShowNotifications] = useState(false);

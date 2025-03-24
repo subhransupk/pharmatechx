@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import Sidebar from "@/app/components/store-panel/Sidebar";
-import Header from "@/app/components/store-panel/Header";
+import Sidebar from "@/components/store-panel/Sidebar";
+import Header from "@/components/store-panel/Header";
 
 export const metadata: Metadata = {
   title: "Medicine Store Management Panel | PharmaTechX",

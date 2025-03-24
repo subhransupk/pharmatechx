@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@/app/lib/utils";
+import { cn } from "@/lib/utils";
 import {
   HomeIcon,
   StoreIcon,
@@ -21,7 +21,7 @@ import {
 const navItems = [
   {
     name: "Dashboard",
-    href: "/admin",
+    href: "/admin/dashboard",
     icon: HomeIcon,
   },
   {
