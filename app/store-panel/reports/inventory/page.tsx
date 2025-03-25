@@ -22,14 +22,14 @@ export default function InventoryReportsPage() {
 
   // Mock data for inventory items
   const inventoryItems = [
-    { id: 1, name: "Paracetamol 500mg", category: "Tablets", stock: 120, reorderLevel: 50, expiryDate: "2025-12-15", status: "normal" },
-    { id: 2, name: "Amoxicillin 250mg", category: "Antibiotics", stock: 35, reorderLevel: 40, expiryDate: "2025-06-30", status: "low" },
-    { id: 3, name: "Vitamin C 1000mg", category: "Supplements", stock: 200, reorderLevel: 50, expiryDate: "2026-01-15", status: "normal" },
-    { id: 4, name: "Omeprazole 20mg", category: "Tablets", stock: 15, reorderLevel: 30, expiryDate: "2025-05-10", status: "critical" },
-    { id: 5, name: "Cetirizine 10mg", category: "Tablets", stock: 80, reorderLevel: 40, expiryDate: "2025-08-22", status: "normal" },
-    { id: 6, name: "Ibuprofen 400mg", category: "Tablets", stock: 25, reorderLevel: 40, expiryDate: "2025-04-18", status: "low" },
-    { id: 7, name: "Metformin 500mg", category: "Tablets", stock: 5, reorderLevel: 30, expiryDate: "2025-07-05", status: "critical" },
-    { id: 8, name: "Aspirin 75mg", category: "Tablets", stock: 150, reorderLevel: 50, expiryDate: "2025-11-30", status: "normal" },
+    { id: 1, name: "Paracetamol 500mg", category: "Tablets", stock: 120, reorderLevel: 50, expiryDate: "2025-12-15", status: "normal", value: "₹6,000" },
+    { id: 2, name: "Amoxicillin 250mg", category: "Antibiotics", stock: 35, reorderLevel: 40, expiryDate: "2025-06-30", status: "low", value: "₹4,375" },
+    { id: 3, name: "Vitamin C 1000mg", category: "Supplements", stock: 200, reorderLevel: 50, expiryDate: "2026-01-15", status: "normal", value: "₹10,000" },
+    { id: 4, name: "Omeprazole 20mg", category: "Tablets", stock: 15, reorderLevel: 30, expiryDate: "2025-05-10", status: "critical", value: "₹2,250" },
+    { id: 5, name: "Cetirizine 10mg", category: "Tablets", stock: 80, reorderLevel: 40, expiryDate: "2025-08-22", status: "normal", value: "₹4,000" },
+    { id: 6, name: "Ibuprofen 400mg", category: "Tablets", stock: 25, reorderLevel: 40, expiryDate: "2025-04-18", status: "low", value: "₹1,625" },
+    { id: 7, name: "Metformin 500mg", category: "Tablets", stock: 5, reorderLevel: 30, expiryDate: "2025-07-05", status: "critical", value: "₹750" },
+    { id: 8, name: "Aspirin 75mg", category: "Tablets", stock: 150, reorderLevel: 50, expiryDate: "2025-11-30", status: "normal", value: "₹7,500" },
   ];
 
   // Mock data for expiring medicines

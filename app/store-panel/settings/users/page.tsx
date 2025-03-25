@@ -19,6 +19,12 @@ import {
   UserPlusIcon,
   ChevronRightIcon
 } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // Staff user type
 interface StaffUser {
@@ -530,18 +536,37 @@ export default function StaffAccountsPage() {
                         </div>
                       ) : (
                         <div className="flex justify-end space-x-2">
-                          <button
-                            onClick={() => setEditingUserId(user.id)}
-                            className="text-primary-600 hover:text-primary-900"
-                          >
-                            <EditIcon className="h-5 w-5" />
-                          </button>
-                          <button
-                            onClick={() => handleDeleteUser(user.id)}
-                            className="text-red-600 hover:text-red-900"
-                          >
-                            <TrashIcon className="h-5 w-5" />
-                          </button>
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <button
+                                  onClick={() => setEditingUserId(user.id)}
+                                  className="text-primary-600 hover:text-primary-900"
+                                >
+                                  <EditIcon className="h-5 w-5" />
+                                </button>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>Edit User</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <button
+                                  onClick={() => handleDeleteUser(user.id)}
+                                  className="text-red-600 hover:text-red-900"
+                                >
+                                  <TrashIcon className="h-5 w-5" />
+                                </button>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>Delete User</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
                         </div>
                       )}
                     </td>

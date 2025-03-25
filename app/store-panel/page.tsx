@@ -14,8 +14,8 @@ import {
 
 export default function Dashboard() {
   return (
-    <div className="space-y-6 max-w-7xl mx-auto font-sans">
-      <div className="flex items-center justify-between">
+    <div>
+      <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
         <div className="flex items-center space-x-2">
           <select className="bg-white border border-gray-200 text-gray-700 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 p-2.5 shadow-sm">
@@ -30,7 +30,7 @@ export default function Dashboard() {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
         <StatCard 
           title="Total Sales" 
           value="₹12,345" 
@@ -62,8 +62,8 @@ export default function Dashboard() {
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="card p-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-semibold text-gray-900">Weekly Sales</h2>
             <button className="btn-secondary text-sm py-1.5">View Report</button>
@@ -100,7 +100,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="card p-6">
+        <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-semibold text-gray-900">Top Selling Medicines</h2>
             <button className="btn-secondary text-sm py-1.5">View All</button>
@@ -167,7 +167,7 @@ export default function Dashboard() {
 
       {/* Recent Activities */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="card p-6">
+        <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-semibold text-gray-900">Recent Orders</h2>
             <button className="btn-secondary text-sm py-1.5 flex items-center gap-1">
@@ -223,7 +223,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="card p-6">
+        <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-semibold text-gray-900">Low Stock & Expiry Alerts</h2>
             <button className="btn-secondary text-sm py-1.5 flex items-center gap-1">
@@ -277,24 +277,27 @@ interface StatCardProps {
 
 function StatCard({ title, value, change, trend, icon }: StatCardProps) {
   return (
-    <div className="card p-6 hover:translate-y-[-2px] transition-all duration-200">
-      <div className="flex justify-between items-start">
+    <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+      <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm font-medium text-gray-500">{title}</p>
-          <h3 className="text-2xl font-bold text-gray-900 mt-1">{value}</h3>
+          <p className="text-sm font-medium text-gray-600">{title}</p>
+          <p className="text-2xl font-semibold text-gray-900 mt-1">{value}</p>
         </div>
-        <div className="p-2 rounded-lg bg-primary-50">{icon}</div>
+        <div className="p-3 bg-gray-50 rounded-full">
+          {icon}
+        </div>
       </div>
-      <div className="mt-4 flex items-center">
+      <div className="flex items-center mt-4">
         {trend === 'up' ? (
-          <ArrowUpIcon className="h-4 w-4 text-green-500 mr-1" />
+          <ArrowUpIcon className="h-4 w-4 text-green-500" />
         ) : (
-          <ArrowDownIcon className="h-4 w-4 text-red-500 mr-1" />
+          <ArrowDownIcon className="h-4 w-4 text-red-500" />
         )}
-        <span className={`text-sm font-medium ${trend === 'up' ? 'text-green-600' : 'text-red-600'}`}>
+        <span className={`text-sm font-medium ml-1 ${
+          trend === 'up' ? 'text-green-600' : 'text-red-600'
+        }`}>
           {change}
         </span>
-        <span className="text-sm text-gray-500 ml-1">vs last period</span>
       </div>
     </div>
   );

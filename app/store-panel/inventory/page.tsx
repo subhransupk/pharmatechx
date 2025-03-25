@@ -9,9 +9,25 @@ import {
   AlertTriangleIcon,
   ClockIcon,
   ArrowUpIcon,
-  ArrowDownIcon
+  ArrowDownIcon,
+  EyeIcon,
+  EditIcon,
+  Trash2Icon,
+  UploadIcon,
+  BarcodeIcon,
+  CameraIcon,
+  SaveIcon,
+  XIcon,
+  ImageIcon,
+  RefreshCwIcon
 } from "lucide-react";
 import Link from "next/link";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // Sample data for inventory
 const inventoryData = [
@@ -118,6 +134,19 @@ const inventoryData = [
     expiryDate: "2025-02-08",
     purchaseDate: "2023-02-08",
     status: "In Stock",
+  },
+  {
+    id: 9,
+    name: "Vitamin D3",
+    category: "Tablet",
+    strength: "1000 IU",
+    batchNumber: "VITD2023-55",
+    stock: 0,
+    minStock: 20,
+    manufacturer: "Wellness Pharma",
+    expiryDate: "2025-07-20",
+    purchaseDate: "2023-07-20",
+    status: "Out of Stock",
   },
 ];
 
@@ -314,7 +343,9 @@ export default function InventoryPage() {
                       {item.manufacturer}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{new Date(item.expiryDate).toLocaleDateString()}</div>
+                      <div className="text-sm text-gray-900">
+                        {item.expiryDate.split('-').reverse().join('/')}
+                      </div>
                       <div className={`text-xs ${diffDays <= 30 ? 'text-red-600' : diffDays <= 90 ? 'text-amber-600' : 'text-gray-500'}`}>
                         {diffDays <= 0 ? 'Expired' : `${diffDays} days left`}
                       </div>
@@ -326,12 +357,31 @@ export default function InventoryPage() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <div className="flex items-center justify-end space-x-2">
-                        <button className="text-green-600 hover:text-green-900 p-1 rounded-full hover:bg-green-50">
-                          <ArrowUpIcon className="h-4 w-4" />
-                        </button>
-                        <button className="text-red-600 hover:text-red-900 p-1 rounded-full hover:bg-red-50">
-                          <ArrowDownIcon className="h-4 w-4" />
-                        </button>
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <button className="text-green-600 hover:text-green-900 p-1 rounded-full hover:bg-green-50">
+                                <ArrowUpIcon className="h-4 w-4" />
+                              </button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>Increase Stock</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <button className="text-red-600 hover:text-red-900 p-1 rounded-full hover:bg-red-50">
+                                <ArrowDownIcon className="h-4 w-4" />
+                              </button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>Decrease Stock</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
                       </div>
                     </td>
                   </tr>

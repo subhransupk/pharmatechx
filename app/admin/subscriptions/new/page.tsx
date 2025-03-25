@@ -86,9 +86,9 @@ export default function NewSubscriptionPage() {
                     <SelectValue placeholder="Select a plan" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="basic">Basic Plan - $49.99/month</SelectItem>
-                    <SelectItem value="professional">Professional Plan - $99.99/month</SelectItem>
-                    <SelectItem value="enterprise">Enterprise Plan - $199.99/month</SelectItem>
+                    <SelectItem value="basic">Basic Plan - ₹2,499/month</SelectItem>
+                    <SelectItem value="professional">Professional Plan - ₹9,999/month</SelectItem>
+                    <SelectItem value="enterprise">Enterprise Plan - ₹19,999/month</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

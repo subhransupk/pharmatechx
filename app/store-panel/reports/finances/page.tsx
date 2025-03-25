@@ -23,32 +23,32 @@ export default function FinancesReportsPage() {
 
   // Mock data for expense categories
   const expenseCategories = [
-    { id: 1, category: "Inventory Purchases", amount: 85000, percentage: 68 },
-    { id: 2, category: "Staff Salaries", amount: 25000, percentage: 20 },
-    { id: 3, category: "Rent & Utilities", amount: 8500, percentage: 6.8 },
-    { id: 4, category: "Marketing", amount: 3500, percentage: 2.8 },
-    { id: 5, category: "Equipment", amount: 1800, percentage: 1.4 },
-    { id: 6, category: "Miscellaneous", amount: 1200, percentage: 1 },
+    { id: 1, category: "Inventory Purchases", amount: "₹85,000", percentage: 68 },
+    { id: 2, category: "Staff Salaries", amount: "₹25,000", percentage: 20 },
+    { id: 3, category: "Rent & Utilities", amount: "₹8,500", percentage: 6.8 },
+    { id: 4, category: "Marketing", amount: "₹3,500", percentage: 2.8 },
+    { id: 5, category: "Equipment", amount: "₹1,800", percentage: 1.4 },
+    { id: 6, category: "Miscellaneous", amount: "₹1,200", percentage: 1 },
   ];
 
   // Mock data for monthly expenses
   const monthlyExpenses = [
-    { month: "Jan", expenses: 110000, revenue: 145000, profit: 35000 },
-    { month: "Feb", expenses: 105000, revenue: 138000, profit: 33000 },
-    { month: "Mar", expenses: 125000, revenue: 165000, profit: 40000 },
-    { month: "Apr", expenses: 118000, revenue: 158000, profit: 40000 },
-    { month: "May", expenses: 122000, revenue: 162000, profit: 40000 },
-    { month: "Jun", expenses: 130000, revenue: 175000, profit: 45000 },
+    { month: "Jan", expenses: 110000, revenue: 145000, profit: 35000, displayExpenses: "₹1,10,000", displayRevenue: "₹1,45,000", displayProfit: "₹35,000" },
+    { month: "Feb", expenses: 105000, revenue: 138000, profit: 33000, displayExpenses: "₹1,05,000", displayRevenue: "₹1,38,000", displayProfit: "₹33,000" },
+    { month: "Mar", expenses: 125000, revenue: 165000, profit: 40000, displayExpenses: "₹1,25,000", displayRevenue: "₹1,65,000", displayProfit: "₹40,000" },
+    { month: "Apr", expenses: 118000, revenue: 158000, profit: 40000, displayExpenses: "₹1,18,000", displayRevenue: "₹1,58,000", displayProfit: "₹40,000" },
+    { month: "May", expenses: 122000, revenue: 162000, profit: 40000, displayExpenses: "₹1,22,000", displayRevenue: "₹1,62,000", displayProfit: "₹40,000" },
+    { month: "Jun", expenses: 130000, revenue: 175000, profit: 45000, displayExpenses: "₹1,30,000", displayRevenue: "₹1,75,000", displayProfit: "₹45,000" },
   ];
 
   // Mock data for recent expenses
   const recentExpenses = [
-    { id: 1, date: "2025-03-12", category: "Inventory Purchases", vendor: "MediSupply Inc.", amount: 12500, status: "paid" },
-    { id: 2, date: "2025-03-10", category: "Staff Salaries", vendor: "Payroll", amount: 25000, status: "paid" },
-    { id: 3, date: "2025-03-08", category: "Rent", vendor: "Property Management", amount: 5500, status: "paid" },
-    { id: 4, date: "2025-03-05", category: "Utilities", vendor: "Electric Company", amount: 1800, status: "paid" },
-    { id: 5, date: "2025-03-03", category: "Marketing", vendor: "Digital Ads Agency", amount: 2500, status: "pending" },
-    { id: 6, date: "2025-03-01", category: "Equipment", vendor: "MedTech Solutions", amount: 1800, status: "paid" },
+    { id: 1, date: "2025-03-12", category: "Inventory Purchases", vendor: "MediSupply Inc.", amount: "₹12,500", status: "paid" },
+    { id: 2, date: "2025-03-10", category: "Staff Salaries", vendor: "Payroll", amount: "₹25,000", status: "paid" },
+    { id: 3, date: "2025-03-08", category: "Rent", vendor: "Property Management", amount: "₹5,500", status: "paid" },
+    { id: 4, date: "2025-03-05", category: "Utilities", vendor: "Electric Company", amount: "₹1,800", status: "paid" },
+    { id: 5, date: "2025-03-03", category: "Marketing", vendor: "Digital Ads Agency", amount: "₹2,500", status: "pending" },
+    { id: 6, date: "2025-03-01", category: "Equipment", vendor: "MedTech Solutions", amount: "₹1,800", status: "paid" },
   ];
 
   // Filter expenses based on status
@@ -261,7 +261,7 @@ export default function FinancesReportsPage() {
                     {expenseCategories.map((category) => (
                       <tr key={category.id} className="hover:bg-gray-50">
                         <td className="px-4 py-3 text-sm text-gray-800">{category.category}</td>
-                        <td className="px-4 py-3 text-sm text-gray-600">₹{category.amount.toLocaleString()}</td>
+                        <td className="px-4 py-3 text-sm text-gray-600">{category.amount}</td>
                         <td className="px-4 py-3 text-sm">
                           <div className="flex items-center">
                             <div className="w-full bg-gray-200 rounded-full h-2.5 mr-2 max-w-[100px]">
@@ -338,7 +338,7 @@ export default function FinancesReportsPage() {
                       <td className="px-4 py-3 text-sm text-gray-800">{expense.date}</td>
                       <td className="px-4 py-3 text-sm text-gray-600">{expense.category}</td>
                       <td className="px-4 py-3 text-sm text-gray-600">{expense.vendor}</td>
-                      <td className="px-4 py-3 text-sm text-gray-800">₹{expense.amount.toLocaleString()}</td>
+                      <td className="px-4 py-3 text-sm text-gray-800">{expense.amount}</td>
                       <td className="px-4 py-3 text-sm">
                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                           expense.status === "paid" 
@@ -405,9 +405,9 @@ export default function FinancesReportsPage() {
                   {monthlyExpenses.map((month, index) => (
                     <tr key={index} className="hover:bg-gray-50">
                       <td className="px-4 py-3 text-sm text-gray-800">{month.month} 2025</td>
-                      <td className="px-4 py-3 text-sm text-gray-600">₹{month.revenue.toLocaleString()}</td>
-                      <td className="px-4 py-3 text-sm text-gray-600">₹{month.expenses.toLocaleString()}</td>
-                      <td className="px-4 py-3 text-sm text-gray-800">₹{month.profit.toLocaleString()}</td>
+                      <td className="px-4 py-3 text-sm text-gray-600">{month.displayRevenue}</td>
+                      <td className="px-4 py-3 text-sm text-gray-600">{month.displayExpenses}</td>
+                      <td className="px-4 py-3 text-sm text-gray-800">{month.displayProfit}</td>
                       <td className="px-4 py-3 text-sm text-gray-600">
                         {Math.round((month.profit / month.revenue) * 100)}%
                       </td>

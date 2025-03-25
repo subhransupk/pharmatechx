@@ -34,20 +34,20 @@ export default function SalesReportsPage() {
 
   // Mock data for top selling products
   const topSellingProducts = [
-    { id: 1, name: "Paracetamol 500mg", category: "Tablets", quantity: 245, revenue: 12250 },
-    { id: 2, name: "Amoxicillin 250mg", category: "Antibiotics", quantity: 180, revenue: 9000 },
-    { id: 3, name: "Vitamin C 1000mg", category: "Supplements", quantity: 156, revenue: 7800 },
-    { id: 4, name: "Omeprazole 20mg", category: "Tablets", quantity: 132, revenue: 6600 },
-    { id: 5, name: "Cetirizine 10mg", category: "Tablets", quantity: 120, revenue: 6000 },
+    { id: 1, name: "Paracetamol 500mg", category: "Tablets", quantity: 245, revenue: "₹12,250" },
+    { id: 2, name: "Amoxicillin 250mg", category: "Antibiotics", quantity: 180, revenue: "₹9,000" },
+    { id: 3, name: "Vitamin C 1000mg", category: "Supplements", quantity: 156, revenue: "₹7,800" },
+    { id: 4, name: "Omeprazole 20mg", category: "Tablets", quantity: 132, revenue: "₹6,600" },
+    { id: 5, name: "Cetirizine 10mg", category: "Tablets", quantity: 120, revenue: "₹6,000" },
   ];
 
   // Mock data for sales by category
   const salesByCategory = [
-    { category: "Tablets", sales: 45000 },
-    { category: "Syrups", sales: 32000 },
-    { category: "Injectables", sales: 18000 },
-    { category: "Supplements", sales: 25000 },
-    { category: "Antibiotics", sales: 30000 },
+    { category: "Tablets", sales: "₹45,000" },
+    { category: "Syrups", sales: "₹32,000" },
+    { category: "Injectables", sales: "₹18,000" },
+    { category: "Supplements", sales: "₹25,000" },
+    { category: "Antibiotics", sales: "₹30,000" },
   ];
 
   return (
@@ -267,7 +267,7 @@ export default function SalesReportsPage() {
                       <td className="px-4 py-3 text-sm text-gray-800">{product.name}</td>
                       <td className="px-4 py-3 text-sm text-gray-600">{product.category}</td>
                       <td className="px-4 py-3 text-sm text-gray-600">{product.quantity}</td>
-                      <td className="px-4 py-3 text-sm text-gray-800">₹{product.revenue.toLocaleString()}</td>
+                      <td className="px-4 py-3 text-sm text-gray-800">{product.revenue}</td>
                     </tr>
                   ))}
                 </tbody>

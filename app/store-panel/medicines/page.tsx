@@ -8,9 +8,24 @@ import {
   DownloadIcon,
   EditIcon,
   Trash2Icon,
-  EyeIcon
+  EyeIcon,
+  UploadIcon,
+  BarcodeIcon,
+  CameraIcon,
+  SaveIcon,
+  XIcon,
+  ImageIcon,
+  RefreshCwIcon
 } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import Barcode from "react-barcode";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // Sample data for medicines
 const medicineData = [
@@ -21,7 +36,7 @@ const medicineData = [
     strength: "500mg",
     manufacturer: "ABC Pharma",
     stock: 120,
-    price: 5.99,
+    price: "₹5.99",
     expiry: "2025-06-15",
   },
   {
@@ -31,7 +46,7 @@ const medicineData = [
     strength: "250mg",
     manufacturer: "XYZ Healthcare",
     stock: 85,
-    price: 12.50,
+    price: "₹12.50",
     expiry: "2024-12-10",
   },
   {
@@ -41,7 +56,7 @@ const medicineData = [
     strength: "10mg",
     manufacturer: "Wellness Pharma",
     stock: 200,
-    price: 8.75,
+    price: "₹8.75",
     expiry: "2025-03-22",
   },
   {
@@ -51,7 +66,7 @@ const medicineData = [
     strength: "20mg",
     manufacturer: "Health Solutions",
     stock: 65,
-    price: 15.25,
+    price: "₹15.25",
     expiry: "2024-09-18",
   },
   {
@@ -61,7 +76,7 @@ const medicineData = [
     strength: "75mg",
     manufacturer: "Global Meds",
     stock: 180,
-    price: 4.50,
+    price: "₹4.50",
     expiry: "2025-08-30",
   },
   {
@@ -71,7 +86,7 @@ const medicineData = [
     strength: "400mg",
     manufacturer: "ABC Pharma",
     stock: 95,
-    price: 7.25,
+    price: "₹7.25",
     expiry: "2025-05-12",
   },
   {
@@ -81,7 +96,7 @@ const medicineData = [
     strength: "500mg",
     manufacturer: "Diabetes Care",
     stock: 150,
-    price: 9.99,
+    price: "₹9.99",
     expiry: "2024-11-25",
   },
   {
@@ -91,8 +106,18 @@ const medicineData = [
     strength: "10mg",
     manufacturer: "Heart Health",
     stock: 110,
-    price: 18.75,
+    price: "₹18.75",
     expiry: "2025-02-08",
+  },
+  {
+    id: 9,
+    name: "Vitamin D3",
+    category: "Tablet",
+    strength: "1000 IU",
+    manufacturer: "Wellness Pharma",
+    stock: 0,
+    price: "₹12.99",
+    expiry: "2025-07-20",
   },
 ];
 
@@ -221,22 +246,51 @@ export default function MedicinesPage() {
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    ₹{medicine.price.toFixed(2)}
+                    {medicine.price}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {medicine.expiry.split('-').reverse().join('/')}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <div className="flex items-center justify-end space-x-2">
-                      <button className="text-blue-600 hover:text-blue-900">
-                        <EyeIcon className="h-4 w-4" />
-                      </button>
-                      <Link href={`/store-panel/medicines/edit/${medicine.id}`} className="text-primary-600 hover:text-primary-900">
-                        <EditIcon className="h-4 w-4" />
-                      </Link>
-                      <button className="text-red-600 hover:text-red-900">
-                        <Trash2Icon className="h-4 w-4" />
-                      </button>
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button className="text-blue-600 hover:text-blue-900">
+                              <EyeIcon className="h-4 w-4" />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>View Details</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Link href={`/store-panel/medicines/edit/${medicine.id}`} className="text-primary-600 hover:text-primary-900">
+                              <EditIcon className="h-4 w-4" />
+                            </Link>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Edit Medicine</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button className="text-red-600 hover:text-red-900">
+                              <Trash2Icon className="h-4 w-4" />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Delete Medicine</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </div>
                   </td>
                 </tr>

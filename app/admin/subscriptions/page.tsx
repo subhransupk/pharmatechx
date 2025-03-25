@@ -25,39 +25,45 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { MoreHorizontal, Search, Filter, Plus } from "lucide-react";
+import { MoreHorizontal, Search, Filter, Plus, Eye, Edit, Ban } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // Mock data - replace with actual data from your backend
 const subscriptions = [
   {
     id: "SUB001",
     storeName: "HealthCare Pharmacy",
-    plan: "Professional",
+    plan: "Premium",
     status: "Active",
-    startDate: "2024-01-01",
-    endDate: "2024-12-31",
-    amount: "$99.99",
+    startDate: "2024-03-01",
+    endDate: "2024-04-01",
+    amount: "₹4,999",
     paymentStatus: "Paid",
   },
   {
     id: "SUB002",
-    storeName: "MediPlus",
-    plan: "Enterprise",
+    storeName: "MediCare Plus",
+    plan: "Professional",
     status: "Active",
-    startDate: "2024-02-01",
-    endDate: "2024-12-31",
-    amount: "$199.99",
-    paymentStatus: "Paid",
+    startDate: "2024-03-15",
+    endDate: "2024-04-15",
+    amount: "₹9,999",
+    paymentStatus: "Pending",
   },
   {
     id: "SUB003",
     storeName: "PharmaCare",
     plan: "Basic",
     status: "Expired",
-    startDate: "2023-12-01",
-    endDate: "2024-01-31",
-    amount: "$49.99",
-    paymentStatus: "Pending",
+    startDate: "2024-02-01",
+    endDate: "2024-03-01",
+    amount: "₹2,499",
+    paymentStatus: "Paid",
   },
 ];
 
@@ -162,18 +168,34 @@ export default function SubscriptionsPage() {
                 <TableCell>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        className="h-8 w-8 p-0"
-                      >
-                        <span className="sr-only">Open menu</span>
-                        <MoreHorizontal className="h-4 w-4" />
-                      </Button>
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              className="h-8 w-8 p-0"
+                            >
+                              <span className="sr-only">Open menu</span>
+                              <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>More Actions</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem>View Details</DropdownMenuItem>
-                      <DropdownMenuItem>Edit Subscription</DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <Eye className="h-4 w-4 mr-2" />
+                        View Details
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <Edit className="h-4 w-4 mr-2" />
+                        Edit Subscription
+                      </DropdownMenuItem>
                       <DropdownMenuItem className="text-red-600">
+                        <Ban className="h-4 w-4 mr-2" />
                         Cancel Subscription
                       </DropdownMenuItem>
                     </DropdownMenuContent>

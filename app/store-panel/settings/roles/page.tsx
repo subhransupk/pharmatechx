@@ -15,6 +15,12 @@ import {
   LockIcon,
   UnlockIcon
 } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // Permission category type
 interface PermissionCategory {
@@ -642,22 +648,39 @@ export default function RolesPermissionsPage() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <div className="flex justify-end space-x-2">
-                      <button
-                        onClick={() => handleEditRole(role.id)}
-                        className="text-primary-600 hover:text-primary-900"
-                        disabled={role.isSystem}
-                        title={role.isSystem ? "System roles cannot be edited" : "Edit role"}
-                      >
-                        <EditIcon className={`h-5 w-5 ${role.isSystem ? 'opacity-50 cursor-not-allowed' : ''}`} />
-                      </button>
-                      <button
-                        onClick={() => handleDeleteRole(role.id)}
-                        className="text-red-600 hover:text-red-900"
-                        disabled={role.isSystem}
-                        title={role.isSystem ? "System roles cannot be deleted" : "Delete role"}
-                      >
-                        <TrashIcon className={`h-5 w-5 ${role.isSystem ? 'opacity-50 cursor-not-allowed' : ''}`} />
-                      </button>
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button
+                              onClick={() => handleEditRole(role.id)}
+                              className="text-primary-600 hover:text-primary-900"
+                              disabled={role.isSystem}
+                            >
+                              <EditIcon className={`h-5 w-5 ${role.isSystem ? 'opacity-50 cursor-not-allowed' : ''}`} />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>{role.isSystem ? "System roles cannot be edited" : "Edit role"}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button
+                              onClick={() => handleDeleteRole(role.id)}
+                              className="text-red-600 hover:text-red-900"
+                              disabled={role.isSystem}
+                            >
+                              <TrashIcon className={`h-5 w-5 ${role.isSystem ? 'opacity-50 cursor-not-allowed' : ''}`} />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>{role.isSystem ? "System roles cannot be deleted" : "Delete role"}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </div>
                   </td>
                 </tr>

@@ -39,6 +39,12 @@ import {
   Share2,
   Download,
 } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // Mock data - replace with actual data from your backend
 const documents = [
@@ -232,15 +238,28 @@ export default function DocumentsPage() {
                 <TableCell>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        className="h-8 w-8 p-0"
-                      >
-                        <span className="sr-only">Open menu</span>
-                        <MoreHorizontal className="h-4 w-4" />
-                      </Button>
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              className="h-8 w-8 p-0"
+                            >
+                              <span className="sr-only">Open menu</span>
+                              <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>More Actions</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
+                      <DropdownMenuItem>
+                        <FileEdit className="h-4 w-4 mr-2" />
+                        Edit Document
+                      </DropdownMenuItem>
                       <DropdownMenuItem>
                         <Download className="h-4 w-4 mr-2" />
                         Download
@@ -248,10 +267,6 @@ export default function DocumentsPage() {
                       <DropdownMenuItem>
                         <Share2 className="h-4 w-4 mr-2" />
                         Share
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <FileEdit className="h-4 w-4 mr-2" />
-                        Edit
                       </DropdownMenuItem>
                       <DropdownMenuItem className="text-red-600">
                         <Trash2 className="h-4 w-4 mr-2" />

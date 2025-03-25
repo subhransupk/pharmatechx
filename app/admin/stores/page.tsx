@@ -20,13 +20,19 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Search, Filter, MoreVertical, Plus } from "lucide-react";
+import { Search, Filter, MoreVertical, Plus, Eye, Edit, CreditCard, Ban } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // Mock data - Replace with actual API call
 const mockStores = [
@@ -49,10 +55,31 @@ const mockStores = [
     phone: "+1987654321",
     status: "inactive",
     subscription: "basic",
-    registeredDate: "2024-02-15",
+    registeredDate: "2024-03-15",
     location: "Los Angeles",
   },
-  // Add more mock data as needed
+  {
+    id: 3,
+    name: "PharmaCare",
+    owner: "Robert Johnson",
+    email: "robert@pharmacare.com",
+    phone: "+1122334455",
+    status: "active",
+    subscription: "premium",
+    registeredDate: "2024-03-10",
+    location: "Chicago",
+  },
+  {
+    id: 4,
+    name: "MediPlus",
+    owner: "Emily Davis",
+    email: "emily@mediplus.com",
+    phone: "+5544332211",
+    status: "active",
+    subscription: "basic",
+    registeredDate: "2024-03-05",
+    location: "Houston",
+  },
 ];
 
 export default function StoresPage() {
@@ -62,81 +89,81 @@ export default function StoresPage() {
   const [subscriptionFilter, setSubscriptionFilter] = useState("all");
 
   return (
-    <div className="p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Stores Management</h1>
-        <Button 
-          onClick={() => router.push("/admin/stores/new")}
-          className="bg-green-500 hover:bg-green-600 text-black font-medium"
-        >
+    <div>
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold text-gray-900">Stores</h1>
+        <Button onClick={() => router.push("/admin/stores/new")}>
           <Plus className="h-4 w-4 mr-2" />
-          Add New Store
+          Add Store
         </Button>
       </div>
 
-      {/* Filters */}
-      <div className="flex gap-4 mb-6">
-        <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4" />
-          <Input
-            placeholder="Search stores..."
-            className="pl-10"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200">
+        <div className="p-4 border-b border-gray-200">
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex-1">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Input
+                  placeholder="Search stores..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <Select value={statusFilter} onValueChange={setStatusFilter}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Status</SelectItem>
+                  <SelectItem value="active">Active</SelectItem>
+                  <SelectItem value="inactive">Inactive</SelectItem>
+                  <SelectItem value="suspended">Suspended</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select value={subscriptionFilter} onValueChange={setSubscriptionFilter}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Subscription" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Plans</SelectItem>
+                  <SelectItem value="premium">Premium</SelectItem>
+                  <SelectItem value="basic">Basic</SelectItem>
+                  <SelectItem value="trial">Trial</SelectItem>
+                </SelectContent>
+              </Select>
+              <Button variant="outline">
+                <Filter className="h-4 w-4 mr-2" />
+                Filter
+              </Button>
+            </div>
+          </div>
         </div>
-        <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Status" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All Status</SelectItem>
-            <SelectItem value="active">Active</SelectItem>
-            <SelectItem value="inactive">Inactive</SelectItem>
-            <SelectItem value="suspended">Suspended</SelectItem>
-          </SelectContent>
-        </Select>
-        <Select value={subscriptionFilter} onValueChange={setSubscriptionFilter}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Subscription" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All Plans</SelectItem>
-            <SelectItem value="basic">Basic</SelectItem>
-            <SelectItem value="premium">Premium</SelectItem>
-          </SelectContent>
-        </Select>
-        <Button variant="outline">
-          <Filter className="h-4 w-4 mr-2" />
-          More Filters
-        </Button>
-      </div>
 
-      {/* Stores Table */}
-      <div className="border rounded-lg">
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Store Name</TableHead>
-              <TableHead>Owner</TableHead>
-              <TableHead>Contact</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Subscription</TableHead>
-              <TableHead>Location</TableHead>
-              <TableHead>Registered Date</TableHead>
-              <TableHead className="w-[50px]"></TableHead>
+              <TableHead className="text-gray-900">Store Name</TableHead>
+              <TableHead className="text-gray-900">Owner</TableHead>
+              <TableHead className="text-gray-900">Contact</TableHead>
+              <TableHead className="text-gray-900">Status</TableHead>
+              <TableHead className="text-gray-900">Subscription</TableHead>
+              <TableHead className="text-gray-900">Location</TableHead>
+              <TableHead className="text-gray-900">Registered</TableHead>
+              <TableHead className="text-right text-gray-900">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {mockStores.map((store) => (
-              <TableRow key={store.id}>
-                <TableCell className="font-medium">{store.name}</TableCell>
-                <TableCell>{store.owner}</TableCell>
+              <TableRow key={store.id} className="hover:bg-gray-50">
+                <TableCell className="font-medium text-gray-900">{store.name}</TableCell>
+                <TableCell className="text-gray-700">{store.owner}</TableCell>
                 <TableCell>
-                  <div>
-                    <div>{store.email}</div>
-                    <div className="text-sm text-gray-500">{store.phone}</div>
-                  </div>
+                  <div className="text-gray-700">{store.email}</div>
+                  <div className="text-sm text-gray-500">{store.phone}</div>
                 </TableCell>
                 <TableCell>
                   <Badge
@@ -144,38 +171,47 @@ export default function StoresPage() {
                       store.status === "active"
                         ? "success"
                         : store.status === "inactive"
-                        ? "secondary"
-                        : "destructive"
+                        ? "destructive"
+                        : "secondary"
                     }
                   >
                     {store.status}
                   </Badge>
                 </TableCell>
-                <TableCell>
-                  <Badge
-                    variant={
-                      store.subscription === "premium"
-                        ? "default"
-                        : "outline"
-                    }
-                  >
-                    {store.subscription}
-                  </Badge>
-                </TableCell>
-                <TableCell>{store.location}</TableCell>
-                <TableCell>{store.registeredDate}</TableCell>
-                <TableCell>
+                <TableCell className="text-gray-700 capitalize">{store.subscription}</TableCell>
+                <TableCell className="text-gray-700">{store.location}</TableCell>
+                <TableCell className="text-gray-700">{store.registeredDate}</TableCell>
+                <TableCell className="text-right">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" className="h-8 w-8 p-0">
-                        <MoreVertical className="h-4 w-4" />
-                      </Button>
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button variant="ghost" className="h-8 w-8 p-0">
+                              <MoreVertical className="h-4 w-4 text-gray-500" />
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>More Actions</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem>View Details</DropdownMenuItem>
-                      <DropdownMenuItem>Edit Store</DropdownMenuItem>
-                      <DropdownMenuItem>Manage Subscription</DropdownMenuItem>
-                      <DropdownMenuItem className="text-red-600">
+                    <DropdownMenuContent align="end" className="bg-white border border-gray-200">
+                      <DropdownMenuItem className="text-gray-700 hover:bg-gray-50">
+                        <Eye className="h-4 w-4 mr-2" />
+                        View Details
+                      </DropdownMenuItem>
+                      <DropdownMenuItem className="text-gray-700 hover:bg-gray-50">
+                        <Edit className="h-4 w-4 mr-2" />
+                        Edit Store
+                      </DropdownMenuItem>
+                      <DropdownMenuItem className="text-gray-700 hover:bg-gray-50">
+                        <CreditCard className="h-4 w-4 mr-2" />
+                        Manage Subscription
+                      </DropdownMenuItem>
+                      <DropdownMenuItem className="text-red-600 hover:bg-red-50">
+                        <Ban className="h-4 w-4 mr-2" />
                         Suspend Store
                       </DropdownMenuItem>
                     </DropdownMenuContent>

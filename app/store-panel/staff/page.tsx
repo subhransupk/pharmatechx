@@ -16,9 +16,24 @@ import {
   Trash2Icon,
   MoreHorizontalIcon,
   CheckCircleIcon,
-  XCircleIcon
+  XCircleIcon,
+  ArrowUpIcon,
+  ArrowDownIcon,
+  CheckIcon,
+  XIcon,
+  ShieldIcon,
+  MailIcon,
+  PhoneIcon,
+  KeyIcon,
+  ChevronRightIcon
 } from "lucide-react";
 import Link from "next/link";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // Sample data for staff members
 const staffData = [
@@ -336,18 +351,45 @@ export default function StaffManagementPage() {
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <div className="flex justify-end space-x-2">
-                      <Link href={`/store-panel/staff/edit/${staff.id}`} className="text-primary-600 hover:text-primary-900">
-                        <EditIcon className="h-4 w-4" />
-                      </Link>
-                      <button className="text-red-600 hover:text-red-900">
-                        <Trash2Icon className="h-4 w-4" />
-                      </button>
-                      <div className="relative">
-                        <button className="text-gray-500 hover:text-gray-700">
-                          <MoreHorizontalIcon className="h-4 w-4" />
-                        </button>
-                      </div>
+                    <div className="flex items-center justify-end gap-2">
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Link href={`/store-panel/staff/edit/${staff.id}`} className="text-primary-600 hover:text-primary-900 p-1">
+                              <EditIcon className="h-4 w-4" />
+                            </Link>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Edit Staff</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button className="text-red-600 hover:text-red-900 p-1">
+                              <Trash2Icon className="h-4 w-4" />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Delete Staff</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button className="text-gray-500 hover:text-gray-700 p-1">
+                              <MoreHorizontalIcon className="h-4 w-4" />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>More Options</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </div>
                   </td>
                 </tr>

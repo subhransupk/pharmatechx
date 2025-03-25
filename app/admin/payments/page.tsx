@@ -25,36 +25,42 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { MoreHorizontal, Search, Filter, Plus } from "lucide-react";
+import { MoreHorizontal, Search, Filter, Plus, Eye, Download, RefreshCw, Ban } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // Mock data - replace with actual data from your backend
 const payments = [
   {
     id: "PAY001",
     storeName: "HealthCare Pharmacy",
-    amount: "$99.99",
+    amount: "₹4,999",
     date: "2024-03-15",
     status: "Completed",
     method: "Credit Card",
-    transactionId: "TRX123456",
+    transactionId: "TXN123456",
   },
   {
     id: "PAY002",
-    storeName: "MediPlus",
-    amount: "$199.99",
+    storeName: "MediCare Plus",
+    amount: "₹9,999",
     date: "2024-03-14",
     status: "Pending",
     method: "Bank Transfer",
-    transactionId: "TRX123457",
+    transactionId: "TXN123457",
   },
   {
     id: "PAY003",
     storeName: "PharmaCare",
-    amount: "$49.99",
+    amount: "₹2,499",
     date: "2024-03-13",
     status: "Failed",
     method: "Credit Card",
-    transactionId: "TRX123458",
+    transactionId: "TXN123458",
   },
 ];
 
@@ -151,19 +157,38 @@ export default function PaymentsPage() {
                 <TableCell>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        className="h-8 w-8 p-0"
-                      >
-                        <span className="sr-only">Open menu</span>
-                        <MoreHorizontal className="h-4 w-4" />
-                      </Button>
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              className="h-8 w-8 p-0"
+                            >
+                              <span className="sr-only">Open menu</span>
+                              <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>More Actions</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem>View Details</DropdownMenuItem>
-                      <DropdownMenuItem>Download Receipt</DropdownMenuItem>
-                      <DropdownMenuItem>Refund</DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <Eye className="h-4 w-4 mr-2" />
+                        View Details
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <Download className="h-4 w-4 mr-2" />
+                        Download Receipt
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <RefreshCw className="h-4 w-4 mr-2" />
+                        Refund
+                      </DropdownMenuItem>
                       <DropdownMenuItem className="text-red-600">
+                        <Ban className="h-4 w-4 mr-2" />
                         Cancel Payment
                       </DropdownMenuItem>
                     </DropdownMenuContent>

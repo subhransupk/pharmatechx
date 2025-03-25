@@ -11,8 +11,15 @@ import {
   Trash2Icon, 
   EyeIcon,
   DownloadIcon,
-  CopyIcon
+  CopyIcon,
+  XIcon
 } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // Sample invoice templates data
 const invoiceTemplates = [
@@ -144,33 +151,68 @@ export default function InvoiceTemplatesPage() {
               {/* Actions */}
               <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
                 <div className="flex items-center gap-2">
-                  <button 
-                    onClick={() => handlePreview(template.id)}
-                    className="p-1.5 rounded-full text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors"
-                    title="Preview"
-                  >
-                    <EyeIcon className="h-4 w-4" />
-                  </button>
-                  <Link 
-                    href={`/store-panel/settings/invoice-templates/edit?id=${template.id}`}
-                    className="p-1.5 rounded-full text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors"
-                    title="Edit"
-                  >
-                    <PencilIcon className="h-4 w-4" />
-                  </Link>
-                  <button 
-                    className="p-1.5 rounded-full text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors"
-                    title="Duplicate"
-                  >
-                    <CopyIcon className="h-4 w-4" />
-                  </button>
-                  {template.id !== 1 && (
-                    <button 
-                      className="p-1.5 rounded-full text-gray-500 hover:text-red-600 hover:bg-red-50 transition-colors"
-                      title="Delete"
-                    >
-                      <Trash2Icon className="h-4 w-4" />
-                    </button>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <button 
+                          onClick={() => handlePreview(template.id)}
+                          className="p-1.5 rounded-full text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+                        >
+                          <EyeIcon className="h-4 w-4" />
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Preview Template</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Link 
+                          href={`/store-panel/settings/invoice-templates/edit?id=${template.id}`}
+                          className="p-1.5 rounded-full text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+                        >
+                          <PencilIcon className="h-4 w-4" />
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Edit Template</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <button 
+                          className="p-1.5 rounded-full text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+                        >
+                          <CopyIcon className="h-4 w-4" />
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Duplicate Template</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+
+                  {!template.isSystem && (
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <button 
+                            className="p-1.5 rounded-full text-gray-500 hover:text-red-600 hover:bg-red-50 transition-colors"
+                          >
+                            <Trash2Icon className="h-4 w-4" />
+                          </button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Delete Template</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
                   )}
                 </div>
                 

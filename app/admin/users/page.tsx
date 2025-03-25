@@ -25,7 +25,14 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { MoreHorizontal, Search, Filter, UserPlus } from "lucide-react";
+import { MoreHorizontal, Search, Filter, UserPlus, Eye, Edit, Key, Ban } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // Mock data - replace with actual data from your backend
 const users = [
@@ -150,42 +157,59 @@ export default function UsersPage() {
                 <TableCell>{user.name}</TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                    {user.role}
-                  </span>
+                  <Badge variant="secondary">{user.role}</Badge>
                 </TableCell>
                 <TableCell>{user.department}</TableCell>
                 <TableCell>{user.store}</TableCell>
                 <TableCell>
-                  <span
-                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                  <Badge
+                    variant={
                       user.status === "Active"
-                        ? "bg-green-100 text-green-800"
+                        ? "success"
                         : user.status === "Inactive"
-                        ? "bg-gray-100 text-gray-800"
-                        : "bg-red-100 text-red-800"
-                    }`}
+                        ? "destructive"
+                        : "secondary"
+                    }
                   >
                     {user.status}
-                  </span>
+                  </Badge>
                 </TableCell>
                 <TableCell>{user.lastLogin}</TableCell>
                 <TableCell>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        className="h-8 w-8 p-0"
-                      >
-                        <span className="sr-only">Open menu</span>
-                        <MoreHorizontal className="h-4 w-4" />
-                      </Button>
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              className="h-8 w-8 p-0"
+                            >
+                              <span className="sr-only">Open menu</span>
+                              <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>More Actions</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem>View Profile</DropdownMenuItem>
-                      <DropdownMenuItem>Edit User</DropdownMenuItem>
-                      <DropdownMenuItem>Reset Password</DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <Eye className="h-4 w-4 mr-2" />
+                        View Profile
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <Edit className="h-4 w-4 mr-2" />
+                        Edit User
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <Key className="h-4 w-4 mr-2" />
+                        Reset Password
+                      </DropdownMenuItem>
                       <DropdownMenuItem className="text-red-600">
+                        <Ban className="h-4 w-4 mr-2" />
                         Deactivate User
                       </DropdownMenuItem>
                     </DropdownMenuContent>

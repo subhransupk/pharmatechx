@@ -7,11 +7,13 @@ import {
   CameraIcon,
   SaveIcon,
   XIcon,
-  ImageIcon
+  ImageIcon,
+  RefreshCwIcon
 } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Barcode from "react-barcode";
 
 export default function AddMedicinePage() {
   const router = useRouter();
@@ -37,6 +39,7 @@ export default function AddMedicinePage() {
   
   const [medicineImage, setMedicineImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [showBarcode, setShowBarcode] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { id, value, type } = e.target as HTMLInputElement;
@@ -82,6 +85,24 @@ export default function AddMedicinePage() {
     // Show success message and redirect
     alert("Medicine added successfully!");
     router.push("/store-panel/medicines");
+  };
+
+  const generateBarcode = () => {
+    // Generate a unique 13-digit barcode (EAN-13 format)
+    const prefix = "890"; // Country code for India
+    const random = Math.floor(Math.random() * 1000000000000).toString().padStart(9, '0');
+    const barcode = prefix + random;
+    
+    // Calculate check digit
+    let sum = 0;
+    for (let i = 0; i < 12; i++) {
+      sum += parseInt(barcode[i]) * (i % 2 === 0 ? 1 : 3);
+    }
+    const checkDigit = (10 - (sum % 10)) % 10;
+    const finalBarcode = barcode + checkDigit;
+    
+    setFormData(prev => ({ ...prev, barcode: finalBarcode }));
+    setShowBarcode(true);
   };
 
   return (
@@ -426,6 +447,46 @@ export default function AddMedicinePage() {
             </p>
           </div>
         </div>
+
+        <div className="mt-6 border-t border-gray-100 pt-6">
+          <h3 className="text-md font-medium text-gray-800 mb-4">Generate Barcode</h3>
+          <div className="flex items-center gap-4">
+            <button 
+              type="button"
+              className="btn-secondary flex items-center gap-2"
+              onClick={generateBarcode}
+            >
+              <RefreshCwIcon className="h-4 w-4" />
+              Generate
+            </button>
+            <p className="text-sm text-gray-500">
+              Generate a new barcode for the medicine
+            </p>
+          </div>
+        </div>
+
+        {showBarcode && formData.barcode && (
+          <div className="mt-2 p-2 bg-white border rounded-md">
+            <Barcode 
+              value={formData.barcode}
+              width={1.5}
+              height={50}
+              fontSize={12}
+              margin={0}
+              displayValue={true}
+            />
+            <div className="mt-2 flex justify-end">
+              <button
+                type="button"
+                onClick={generateBarcode}
+                className="text-sm text-primary-600 hover:text-primary-900 flex items-center"
+              >
+                <RefreshCwIcon className="h-4 w-4 mr-1" />
+                Generate New
+              </button>
+            </div>
+          </div>
+        )}
       </form>
     </div>
   );
