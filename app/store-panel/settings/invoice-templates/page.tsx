@@ -28,6 +28,7 @@ const invoiceTemplates = [
     name: "Standard Invoice",
     description: "A clean, professional invoice template with your store logo and essential details.",
     isDefault: true,
+    isSystem: true,
     thumbnail: "/invoice-template-1.png", // This would be a real image in production
     lastModified: "2023-03-10",
   },
@@ -36,6 +37,7 @@ const invoiceTemplates = [
     name: "Detailed Receipt",
     description: "Comprehensive receipt with itemized listing and payment details.",
     isDefault: false,
+    isSystem: false,
     thumbnail: "/invoice-template-2.png", // This would be a real image in production
     lastModified: "2023-02-15",
   },
@@ -44,6 +46,7 @@ const invoiceTemplates = [
     name: "Minimal Invoice",
     description: "A simplified invoice design with just the essential information.",
     isDefault: false,
+    isSystem: false,
     thumbnail: "/invoice-template-3.png", // This would be a real image in production
     lastModified: "2023-01-20",
   },
@@ -52,6 +55,7 @@ const invoiceTemplates = [
     name: "Pharmacy Branded",
     description: "Pharmacy-specific template with medical symbols and prescription details.",
     isDefault: false,
+    isSystem: false,
     thumbnail: "/invoice-template-4.png", // This would be a real image in production
     lastModified: "2022-12-05",
   },
