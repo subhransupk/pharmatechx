@@ -73,21 +73,21 @@ const blogPost = {
   ],
 };
 
-interface PageProps {
+type Props = {
   params: {
     slug: string;
   };
   searchParams: { [key: string]: string | string[] | undefined };
-}
+};
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: blogPost.title,
     description: blogPost.content.substring(0, 160),
   };
 }
 
-export default async function BlogPostPage({ params }: PageProps) {
+export default function BlogPostPage({ params }: Props) {
   // Here you would typically fetch the blog post data based on the slug
   // For now, we're using the static data
   return <BlogPostContent blogPost={blogPost} />;
