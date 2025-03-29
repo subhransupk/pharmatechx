@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { motion } from "framer-motion";
 import { Calendar, Clock, Tag, Share2, Facebook, Twitter, Linkedin, Mail, ArrowLeft } from "lucide-react";
@@ -85,6 +83,7 @@ const formatDate = (dateString: string) => {
   });
 };
 
+// Update the Props type to match Next.js 13+ page props
 type Props = {
   params: {
     slug: string;
@@ -92,7 +91,8 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export default function BlogPostPage({ params }: Props) {
+// Update the component to be async
+export default async function BlogPostPage({ params }: Props) {
   return (
     <div className="bg-white">
       {/* Back Button */}
