@@ -1,5 +1,6 @@
 import React from "react";
 import BlogPostContent from "./components/BlogPostContent";
+import { Metadata } from "next";
 
 // This would typically come from your CMS or database
 const blogPost = {
@@ -72,14 +73,21 @@ const blogPost = {
   ],
 };
 
-type Props = {
+interface PageProps {
   params: {
     slug: string;
   };
   searchParams: { [key: string]: string | string[] | undefined };
-};
+}
 
-export default async function BlogPostPage({ params }: Props) {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  return {
+    title: blogPost.title,
+    description: blogPost.content.substring(0, 160),
+  };
+}
+
+export default async function BlogPostPage({ params }: PageProps) {
   // Here you would typically fetch the blog post data based on the slug
   // For now, we're using the static data
   return <BlogPostContent blogPost={blogPost} />;
