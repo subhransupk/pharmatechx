@@ -42,14 +42,15 @@ export function AnimatedHeading({ children, className }: AnimatedHeadingProps) {
 interface AnimatedCardProps {
   children: React.ReactNode;
   className?: string;
+  delay?: number;
 }
 
-export function AnimatedCard({ children, className }: AnimatedCardProps) {
+export function AnimatedCard({ children, className, delay = 0.3 }: AnimatedCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, delay: 0.3 }}
+      transition={{ duration: 0.5, delay }}
       className={cn(className)}
     >
       {children}
