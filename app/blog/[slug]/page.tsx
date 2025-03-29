@@ -73,11 +73,15 @@ const blogPost = {
   ],
 };
 
+type PageProps = {
+  params: Promise<{ slug: string }>;
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
 export async function generateMetadata({
   params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
   return {
     title: blogPost.title,
     description: blogPost.content.substring(0, 160),
@@ -86,10 +90,9 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({
   params,
-}: {
-  params: { slug: string };
-}) {
+}: PageProps) {
   // Here you would typically fetch the blog post data based on the slug
   // For now, we're using the static data
+  const { slug } = await params;
   return <BlogPostContent blogPost={blogPost} />;
 } 
