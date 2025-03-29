@@ -1,101 +1,227 @@
-import Image from "next/image";
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { ArrowRight, CheckCircle2, Package, Shield, Zap, Pill, Syringe, Heart, Stethoscope, Activity, Brain, Microscope } from "lucide-react";
+import Link from "next/link";
+import { Features } from "../components/sections/features";
+import { Offerings } from "../components/sections/offerings";
+import { Testimonials } from "../components/sections/testimonials";
+import { CounterSection } from "../components/sections/counter";
+import { DemoSection } from "../components/sections/demo";
+import { motion, AnimatePresence } from "framer-motion";
+import { AnimatedSection, AnimatedHeading, AnimatedCard } from "../components/ui/animated-section";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className="flex min-h-screen flex-col">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-white py-20">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f9ff_1px,transparent_1px),linear-gradient(to_bottom,#f0f9ff_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]" />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        {/* Background Icons */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-10 left-10 animate-float">
+            <Pill className="h-12 w-12 text-primary-200/80" />
+          </div>
+          <div className="absolute top-20 right-20 animate-float-delayed">
+            <Syringe className="h-16 w-16 text-primary-200/80" />
+          </div>
+          <div className="absolute bottom-20 left-1/4 animate-float">
+            <Heart className="h-14 w-14 text-primary-200/80" />
+          </div>
+          <div className="absolute bottom-10 right-1/4 animate-float-delayed">
+            <Stethoscope className="h-16 w-16 text-primary-200/80" />
+          </div>
+          <div className="absolute top-1/3 right-10 animate-float">
+            <Activity className="h-12 w-12 text-primary-200/80" />
+          </div>
+          <div className="absolute bottom-1/3 left-10 animate-float-delayed">
+            <Brain className="h-14 w-14 text-primary-200/80" />
+          </div>
+          <div className="absolute top-1/2 left-1/2 animate-float">
+            <Microscope className="h-16 w-16 text-primary-200/80" />
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        <div className="container mx-auto px-4 relative">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+            <div className="flex flex-col justify-center">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 text-primary-700 mb-6 border border-primary-100"
+              >
+                <Shield className="h-4 w-4 mr-2" />
+                <span className="text-sm font-medium">Trusted by 5000+ Pharmacies</span>
+              </motion.div>
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl"
+              >
+                Modern Pharmacy Management Made Simple
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="mb-8 text-lg text-gray-600"
+              >
+                Streamline your pharmacy operations with our comprehensive management system. 
+                From inventory to billing, we've got everything covered.
+              </motion.p>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex flex-col gap-4 sm:flex-row"
+              >
+                <Button size="lg" className="bg-primary-600 hover:bg-primary-700 shadow-lg shadow-primary-200">
+                  Get Started Free
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <Button size="lg" variant="outline" className="border-2">
+                  Schedule Demo
+                </Button>
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="mt-8 flex flex-wrap items-center gap-6"
+              >
+                <div className="flex items-center">
+                  <CheckCircle2 className="h-5 w-5 text-primary-600 mr-2" />
+                  <span className="text-sm text-gray-600">Free 30-day trial</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle2 className="h-5 w-5 text-primary-600 mr-2" />
+                  <span className="text-sm text-gray-600">No credit card required</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle2 className="h-5 w-5 text-primary-600 mr-2" />
+                  <span className="text-sm text-gray-600">24/7 support</span>
+                </div>
+              </motion.div>
+            </div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="relative"
+            >
+              <div className="relative aspect-square rounded-2xl bg-gradient-to-br from-primary-50 to-white overflow-hidden border border-primary-100 shadow-xl">
+                <div className="absolute inset-0 bg-primary-100/20 backdrop-blur-sm" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Package className="h-32 w-32 text-primary-600" />
+                </div>
+                {/* Animated gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-100/0 via-primary-100/10 to-primary-100/0 animate-gradient" />
+              </div>
+              {/* Decorative Elements */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary-100 rounded-full opacity-50 blur-xl" />
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary-100 rounded-full opacity-30 blur-xl" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Counter Section */}
+      <AnimatedSection>
+        <CounterSection />
+      </AnimatedSection>
+
+      {/* Features Section */}
+      <AnimatedSection>
+        <Features />
+      </AnimatedSection>
+
+      {/* Demo Section */}
+      <AnimatedSection>
+        <DemoSection />
+      </AnimatedSection>
+
+      {/* Offerings Section */}
+      <AnimatedSection>
+        <Offerings />
+      </AnimatedSection>
+
+      {/* Testimonials Section */}
+      <AnimatedSection>
+        <Testimonials />
+      </AnimatedSection>
+
+      {/* How It Works Section */}
+      <section className="bg-gray-50 py-20">
+        <div className="container mx-auto px-4">
+          <AnimatedHeading className="mb-12 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-gray-900">
+              How PharmatechX Works
+            </h2>
+            <p className="text-lg text-gray-600">
+              Get started in minutes, not hours
+            </p>
+          </AnimatedHeading>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <AnimatedCard delay={0.1}>
+              <div className="text-center">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-600">
+                  1
+                </div>
+                <h3 className="mb-2 text-xl font-semibold">Sign Up</h3>
+                <p className="text-gray-600">
+                  Create your account and set up your pharmacy profile
+                </p>
+              </div>
+            </AnimatedCard>
+            <AnimatedCard delay={0.2}>
+              <div className="text-center">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-600">
+                  2
+                </div>
+                <h3 className="mb-2 text-xl font-semibold">Add Your Inventory</h3>
+                <p className="text-gray-600">
+                  Import your existing inventory or add items manually
+                </p>
+              </div>
+            </AnimatedCard>
+            <AnimatedCard delay={0.3}>
+              <div className="text-center">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-600">
+                  3
+                </div>
+                <h3 className="mb-2 text-xl font-semibold">Start Managing</h3>
+                <p className="text-gray-600">
+                  Begin managing your pharmacy with our intuitive tools
+                </p>
+              </div>
+            </AnimatedCard>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <AnimatedCard>
+            <Card className="bg-primary-600 p-12 text-center text-white">
+              <h2 className="mb-4 text-3xl font-bold">
+                Ready to Transform Your Pharmacy?
+              </h2>
+              <p className="mb-8 text-lg">
+                Join thousands of pharmacies already using PharmatechX
+              </p>
+              <Button size="lg" variant="secondary">
+                Start Free Trial
+              </Button>
+            </Card>
+          </AnimatedCard>
+        </div>
+      </section>
+    </main>
   );
 }

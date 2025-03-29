@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { Header } from "../components/layout/header";
+import { Footer } from "../components/layout/footer";
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
-  display: "swap",
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PharmaTechX - Medicine Store Management",
-  description: "Manage your medicine store efficiently with PharmaTechX",
+  title: "PharmatechX - Modern Pharmacy Management",
+  description: "Streamline your pharmacy operations with our comprehensive management system.",
 };
 
 export default function RootLayout({
@@ -21,10 +18,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.variable} font-sans antialiased text-gray-900`}
-      >
-        {children}
+      <body className={inter.className}>
+        <div className="flex min-h-screen flex-col">
+          <Header />
+          <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+            <main className="flex-1">{children}</main>
+          </div>
+          <Footer />
+        </div>
       </body>
     </html>
   );
