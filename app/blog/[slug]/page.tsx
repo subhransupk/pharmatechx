@@ -85,7 +85,14 @@ const formatDate = (dateString: string) => {
   });
 };
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+type Props = {
+  params: {
+    slug: string;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default function BlogPostPage({ params }: Props) {
   return (
     <div className="bg-white">
       {/* Back Button */}
