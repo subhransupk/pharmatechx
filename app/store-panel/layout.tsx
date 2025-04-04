@@ -1,24 +1,25 @@
-import { Metadata } from "next";
+"use client";
+
+import { Inter } from "next/font/google";
 import Sidebar from "@/components/store-panel/Sidebar";
 import Header from "@/components/store-panel/Header";
 
-export const metadata: Metadata = {
-  title: "Medicine Store Management Panel | PharmaTechX",
-  description: "Manage your medicine store efficiently with PharmaTechX",
-};
+const inter = Inter({ subsets: ["latin"] });
 
 export default function StoreLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <div className="flex h-screen bg-white font-sans text-gray-900">
-      <Sidebar />
-      <div className="flex flex-col flex-1 overflow-hidden">
-        <Header />
-        <main className="flex-1 overflow-y-auto bg-gray-50 p-4">
-          {children}
+    <div className={`${inter.className} min-h-screen bg-gray-50`}>
+      <Header />
+      <div className="flex">
+        <Sidebar />
+        <main className="flex-1 p-6">
+          <div className="mx-auto w-full max-w-7xl">
+            {children}
+          </div>
         </main>
       </div>
     </div>

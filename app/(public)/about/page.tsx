@@ -110,21 +110,23 @@ export default function AboutPage() {
       <section className="relative overflow-hidden bg-white py-20">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f9ff_1px,transparent_1px),linear-gradient(to_bottom,#f0f9ff_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]" />
         
-        <div className="container mx-auto px-4 relative">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
           <AnimatedHeading className="text-center max-w-3xl mx-auto">
-            <h1 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-              Transforming Pharmacy Management
-            </h1>
-            <p className="text-xl text-gray-600">
-              Our mission is to revolutionize how pharmacies operate, making healthcare more accessible and efficient for everyone.
-            </p>
+            <div className="mb-6">
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+                Transforming Pharmacy Management
+              </h1>
+              <p className="text-xl text-gray-600 mt-4">
+                Our mission is to revolutionize how pharmacies operate, making healthcare more accessible and efficient for everyone.
+              </p>
+            </div>
           </AnimatedHeading>
         </div>
       </section>
 
       {/* Story Section */}
       <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <AnimatedCard>
               <div className="relative">
@@ -141,9 +143,9 @@ export default function AboutPage() {
             </AnimatedCard>
             <div>
               <AnimatedHeading>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                <div className="text-3xl font-bold text-gray-900 mb-6">
                   Our Story
-                </h2>
+                </div>
                 <p className="text-lg text-gray-600 mb-6">
                   Founded in 2020, PharmatechX emerged from a simple observation: pharmacies needed better tools to manage their operations. What started as a small team of healthcare professionals and tech innovators has grown into a global movement.
                 </p>
@@ -158,11 +160,11 @@ export default function AboutPage() {
 
       {/* Values Section */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <AnimatedHeading className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <div className="text-3xl font-bold text-gray-900 mb-4">
               Our Core Values
-            </h2>
+            </div>
             <p className="text-lg text-gray-600">
               The principles that guide everything we do
             </p>
@@ -186,7 +188,7 @@ export default function AboutPage() {
 
       {/* Stats Section */}
       <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <AnimatedCard key={stat.label} delay={index * 0.1}>
@@ -205,11 +207,11 @@ export default function AboutPage() {
 
       {/* Team Section */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <AnimatedHeading className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <div className="text-3xl font-bold text-gray-900 mb-4">
               Meet Our Team
-            </h2>
+            </div>
             <p className="text-lg text-gray-600">
               The passionate people behind PharmatechX
             </p>
@@ -236,11 +238,11 @@ export default function AboutPage() {
 
       {/* Contact Section */}
       <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <AnimatedHeading className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <div className="text-3xl font-bold text-gray-900 mb-4">
               Get in Touch
-            </h2>
+            </div>
             <p className="text-lg text-gray-600">
               We'd love to hear from you
             </p>
@@ -274,7 +276,7 @@ export default function AboutPage() {
 
       {/* CTA Section */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <AnimatedCard>
             <Card className="bg-primary-600 p-12 text-center text-white">
               <h2 className="text-3xl font-bold mb-4">

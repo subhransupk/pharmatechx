@@ -20,24 +20,24 @@ export default function LoginPage() {
   return (
     <main className="flex min-h-screen flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-white py-20">
+      <section className="relative overflow-hidden bg-white py-12">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f9ff_1px,transparent_1px),linear-gradient(to_bottom,#f0f9ff_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]" />
         
-        <div className="container mx-auto px-4 relative">
-          <AnimatedHeading className="text-center max-w-3xl mx-auto">
-            <h1 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
+          <AnimatedSection className="text-center max-w-3xl mx-auto">
+            <h1 className="mb-4 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
               Welcome Back
             </h1>
             <p className="text-xl text-gray-600">
               Sign in to your account to continue
             </p>
-          </AnimatedHeading>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Login Form Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
+      <section className="py-8">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-md mx-auto">
             <AnimatedCard>
               <Card className="p-8">

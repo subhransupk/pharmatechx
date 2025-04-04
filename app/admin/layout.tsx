@@ -1,24 +1,25 @@
-import { Metadata } from "next";
+"use client";
+
+import { Inter } from "next/font/google";
 import Sidebar from "@/components/admin/Sidebar";
 import Header from "@/components/admin/Header";
 
-export const metadata: Metadata = {
-  title: "Admin Dashboard",
-  description: "Admin dashboard for managing stores and users",
-};
+const inter = Inter({ subsets: ["latin"] });
 
 export default function AdminLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <div className="flex h-screen bg-white font-sans text-gray-900">
-      <Sidebar />
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <Header />
-        <main className="flex-1 overflow-y-auto bg-gray-50 p-4">
-          {children}
+    <div className={`${inter.className} min-h-screen bg-gray-50`}>
+      <Header />
+      <div className="flex">
+        <Sidebar />
+        <main className="flex-1 p-6">
+          <div className="mx-auto w-full max-w-7xl">
+            {children}
+          </div>
         </main>
       </div>
     </div>

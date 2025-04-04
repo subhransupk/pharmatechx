@@ -1,136 +1,174 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
-  HomeIcon,
-  PillIcon,
-  BarChartIcon,
-  UsersIcon,
-  SettingsIcon,
-  FileTextIcon,
-  ShoppingCartIcon,
-  BellIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
+  LayoutDashboard,
+  Package,
+  Users,
+  FileText,
+  Settings,
+  ShoppingCart,
+  BarChart,
+  Bell,
+  HelpCircle,
+  LogOut,
+  Pill,
 } from "lucide-react";
 
-const navItems = [
+const navigation = [
   {
     name: "Dashboard",
     href: "/store-panel",
-    icon: HomeIcon,
-  },
-  {
-    name: "Medicine Management",
-    href: "/store-panel/medicines",
-    icon: PillIcon,
+    icon: LayoutDashboard,
   },
   {
     name: "Inventory",
     href: "/store-panel/inventory",
-    icon: ShoppingCartIcon,
+    icon: Package,
+    subItems: [
+      { name: "Stock Management", href: "/store-panel/inventory/stock" },
+      { name: "Low Stock Alerts", href: "/store-panel/inventory/alerts" },
+      { name: "Stock History", href: "/store-panel/inventory/history" },
+      { name: "Stock Reports", href: "/store-panel/inventory/reports" },
+    ],
   },
   {
-    name: "Billing",
-    href: "/store-panel/billing",
-    icon: FileTextIcon,
+    name: "Prescriptions",
+    href: "/store-panel/prescriptions",
+    icon: FileText,
+    subItems: [
+      { name: "New Prescriptions", href: "/store-panel/prescriptions/new" },
+      { name: "Pending", href: "/store-panel/prescriptions/pending" },
+      { name: "Ready for Pickup", href: "/store-panel/prescriptions/ready" },
+      { name: "Completed", href: "/store-panel/prescriptions/completed" },
+      { name: "Search", href: "/store-panel/prescriptions/search" },
+      { name: "Reports", href: "/store-panel/prescriptions/reports" },
+    ],
   },
   {
-    name: "Staff",
-    href: "/store-panel/staff",
-    icon: UsersIcon,
+    name: "Patients",
+    href: "/store-panel/patients",
+    icon: Users,
+    subItems: [
+      { name: "Patient List", href: "/store-panel/patients/list" },
+      { name: "Patient Records", href: "/store-panel/patients/records" },
+      { name: "Patient History", href: "/store-panel/patients/history" },
+      { name: "Patient Reports", href: "/store-panel/patients/reports" },
+    ],
   },
   {
-    name: "Reports",
-    href: "/store-panel/reports",
-    icon: BarChartIcon,
+    name: "Sales",
+    href: "/store-panel/sales",
+    icon: ShoppingCart,
+    subItems: [
+      { name: "New Sale", href: "/store-panel/sales/new" },
+      { name: "Sales History", href: "/store-panel/sales/history" },
+      { name: "Sales Reports", href: "/store-panel/sales/reports" },
+      { name: "Refunds", href: "/store-panel/sales/refunds" },
+    ],
+  },
+  {
+    name: "Analytics",
+    href: "/store-panel/analytics",
+    icon: BarChart,
+    subItems: [
+      { name: "Sales Analytics", href: "/store-panel/analytics/sales" },
+      { name: "Inventory Analytics", href: "/store-panel/analytics/inventory" },
+      { name: "Customer Analytics", href: "/store-panel/analytics/customers" },
+      { name: "Financial Reports", href: "/store-panel/analytics/financial" },
+    ],
+  },
+  {
+    name: "Notifications",
+    href: "/store-panel/notifications",
+    icon: Bell,
+  },
+  {
+    name: "Support",
+    href: "/store-panel/support",
+    icon: HelpCircle,
   },
   {
     name: "Settings",
     href: "/store-panel/settings",
-    icon: SettingsIcon,
+    icon: Settings,
+    subItems: [
+      { name: "General Settings", href: "/store-panel/settings/general" },
+      { name: "User Management", href: "/store-panel/settings/users" },
+      { name: "Security", href: "/store-panel/settings/security" },
+      { name: "Backup & Restore", href: "/store-panel/settings/backup" },
+      { name: "Printing", href: "/store-panel/settings/printing" },
+      { name: "Email Settings", href: "/store-panel/settings/email" },
+      { name: "Phone Settings", href: "/store-panel/settings/phone" },
+      { name: "Messaging", href: "/store-panel/settings/messaging" },
+    ],
   },
 ];
 
 export default function Sidebar() {
-  const [isCollapsed, setIsCollapsed] = useState(false);
   const pathname = usePathname();
 
   return (
-    <aside
-      className={cn(
-        "bg-white border-r border-gray-200 transition-all duration-300",
-        isCollapsed ? "w-16" : "w-64"
-      )}
-    >
-      <div className="flex flex-col h-full">
-        <div className="flex items-center justify-between p-4 border-b border-gray-200">
-          {!isCollapsed && (
-            <h1 className="text-xl font-bold text-gray-900">PharmaTechX</h1>
-          )}
-          <button
-            onClick={() => setIsCollapsed(!isCollapsed)}
-            className="p-2 text-gray-700 hover:text-gray-900 rounded-lg hover:bg-gray-100"
-          >
-            {isCollapsed ? (
-              <ChevronRightIcon className="w-5 h-5" />
-            ) : (
-              <ChevronLeftIcon className="w-5 h-5" />
-            )}
-          </button>
-        </div>
-
-        <nav className="flex-1 p-4 space-y-1">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={cn(
-                  "flex items-center rounded-lg transition-colors group relative",
-                  isCollapsed ? "justify-center px-2" : "px-3",
-                  "py-2 text-sm font-medium",
-                  isActive
-                    ? "bg-primary-50 text-primary-700"
-                    : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-                )}
-              >
-                <item.icon
-                  className={cn(
-                    "w-5 h-5",
-                    !isCollapsed && "mr-3",
-                    isActive ? "text-primary-700" : "text-gray-700"
-                  )}
-                />
-                {!isCollapsed && <span>{item.name}</span>}
-                {isCollapsed && (
-                  <div className="absolute left-full ml-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                    {item.name}
-                  </div>
-                )}
-              </Link>
-            );
-          })}
-        </nav>
-
-        {!isCollapsed && (
-          <div className="p-4 border-t border-gray-200">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
-                <BellIcon className="w-4 h-4 text-gray-700" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-gray-900">Store Support</p>
-                <p className="text-xs text-gray-500">Need help?</p>
-              </div>
-            </div>
-          </div>
-        )}
+    <div className="flex h-full w-64 flex-col bg-white border-r border-gray-200">
+      <div className="flex h-16 items-center justify-center border-b border-gray-200">
+        <Link href="/store-panel" className="flex items-center space-x-2">
+          <Pill className="h-8 w-8 text-primary-600" />
+          <span className="text-xl font-bold text-gray-900">PharmatechX</span>
+        </Link>
       </div>
-    </aside>
+      <nav className="flex-1 space-y-1 overflow-y-auto p-4">
+        {navigation.map((item) => (
+          <div key={item.name}>
+            <Link
+              href={item.href}
+              className={cn(
+                "group flex items-center rounded-md px-3 py-2 text-sm font-medium",
+                pathname === item.href
+                  ? "bg-primary-50 text-primary-600"
+                  : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+              )}
+            >
+              <item.icon
+                className={cn(
+                  "mr-3 h-5 w-5 flex-shrink-0",
+                  pathname === item.href
+                    ? "text-primary-600"
+                    : "text-gray-400 group-hover:text-gray-500"
+                )}
+              />
+              {item.name}
+            </Link>
+            {item.subItems && (
+              <div className="ml-6 mt-1 space-y-1">
+                {item.subItems.map((subItem) => (
+                  <Link
+                    key={subItem.name}
+                    href={subItem.href}
+                    className={cn(
+                      "group flex items-center rounded-md px-3 py-2 text-sm font-medium",
+                      pathname === subItem.href
+                        ? "bg-primary-50 text-primary-600"
+                        : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                    )}
+                  >
+                    {subItem.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </nav>
+      <div className="border-t border-gray-200 p-4">
+        <button
+          className="flex w-full items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+        >
+          <LogOut className="mr-3 h-5 w-5 text-gray-400" />
+          Sign Out
+        </button>
+      </div>
+    </div>
   );
 } 

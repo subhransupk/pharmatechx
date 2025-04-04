@@ -4,13 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, CheckCircle2, Package, Shield, Zap, Pill, Syringe, Heart, Stethoscope, Activity, Brain, Microscope } from "lucide-react";
 import Link from "next/link";
-import { Features } from "../components/sections/features";
-import { Offerings } from "../components/sections/offerings";
-import { Testimonials } from "../components/sections/testimonials";
-import { CounterSection } from "../components/sections/counter";
-import { DemoSection } from "../components/sections/demo";
+import { Features } from "@/components/sections/features";
+import { Offerings } from "@/components/sections/offerings";
+import { Testimonials } from "@/components/sections/testimonials";
+import { CounterSection } from "@/components/sections/counter";
+import { DemoSection } from "@/components/sections/demo";
 import { motion, AnimatePresence } from "framer-motion";
-import { AnimatedSection, AnimatedHeading, AnimatedCard } from "../components/ui/animated-section";
+import { AnimatedSection, AnimatedHeading, AnimatedCard } from "@/components/ui/animated-section";
 
 export default function Home() {
   return (
@@ -45,7 +45,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="container mx-auto px-4 relative">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
             <div className="flex flex-col justify-center">
               <motion.div 
@@ -130,34 +130,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Counter Section */}
-      <AnimatedSection>
-        <CounterSection />
-      </AnimatedSection>
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 space-y-20">
+        {/* Counter Section */}
+        <AnimatedSection>
+          <CounterSection />
+        </AnimatedSection>
 
-      {/* Features Section */}
-      <AnimatedSection>
-        <Features />
-      </AnimatedSection>
+        {/* Features Section */}
+        <AnimatedSection>
+          <Features />
+        </AnimatedSection>
 
-      {/* Demo Section */}
-      <AnimatedSection>
-        <DemoSection />
-      </AnimatedSection>
+        {/* Demo Section */}
+        <AnimatedSection>
+          <DemoSection />
+        </AnimatedSection>
 
-      {/* Offerings Section */}
-      <AnimatedSection>
-        <Offerings />
-      </AnimatedSection>
+        {/* Offerings Section */}
+        <AnimatedSection>
+          <Offerings />
+        </AnimatedSection>
 
-      {/* Testimonials Section */}
-      <AnimatedSection>
-        <Testimonials />
-      </AnimatedSection>
+        {/* Testimonials Section */}
+        <AnimatedSection>
+          <Testimonials />
+        </AnimatedSection>
 
-      {/* How It Works Section */}
-      <section className="bg-gray-50 py-20">
-        <div className="container mx-auto px-4">
+        {/* How It Works Section */}
+        <section className="bg-gray-50 py-20">
           <AnimatedHeading className="mb-12 text-center">
             <h2 className="mb-4 text-3xl font-bold text-gray-900">
               How PharmatechX Works
@@ -201,12 +201,10 @@ export default function Home() {
               </div>
             </AnimatedCard>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
+        {/* CTA Section */}
+        <section className="py-20">
           <AnimatedCard>
             <Card className="bg-primary-600 p-12 text-center text-white">
               <h2 className="mb-4 text-3xl font-bold">
@@ -220,8 +218,8 @@ export default function Home() {
               </Button>
             </Card>
           </AnimatedCard>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
   );
 }

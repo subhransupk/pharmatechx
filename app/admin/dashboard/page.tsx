@@ -20,6 +20,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { StatCard } from "@/components/admin/StatCard";
 
 export default function AdminDashboard() {
   return (
@@ -48,25 +49,25 @@ export default function AdminDashboard() {
           icon={<StoreIcon className="h-5 w-5 text-primary-500" />}
         />
         <StatCard 
-          title="Active Subscriptions" 
-          value="142" 
-          change="+5.3%" 
+          title="Active Users" 
+          value="2,345" 
+          change="+12.5%" 
           trend="up"
-          icon={<PackageIcon className="h-5 w-5 text-secondary-500" />}
+          icon={<UsersIcon className="h-5 w-5 text-primary-500" />}
         />
         <StatCard 
           title="Total Revenue" 
-          value="₹45,678" 
-          change="+12.5%" 
-          trend="up"
-          icon={<DollarSignIcon className="h-5 w-5 text-green-500" />}
+          value="$45,678" 
+          change="-3.2%" 
+          trend="down"
+          icon={<DollarSignIcon className="h-5 w-5 text-primary-500" />}
         />
         <StatCard 
-          title="Active Users" 
-          value="1,234" 
-          change="+3.8%" 
+          title="Pending Orders" 
+          value="89" 
+          change="+5.7%" 
           trend="up"
-          icon={<UsersIcon className="h-5 w-5 text-blue-500" />}
+          icon={<PackageIcon className="h-5 w-5 text-primary-500" />}
         />
       </div>
 
@@ -294,42 +295,6 @@ export default function AdminDashboard() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
-}
-
-interface StatCardProps {
-  title: string;
-  value: string;
-  change: string;
-  trend: 'up' | 'down';
-  icon: React.ReactNode;
-}
-
-function StatCard({ title, value, change, trend, icon }: StatCardProps) {
-  return (
-    <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-sm font-medium text-gray-600">{title}</p>
-          <p className="text-2xl font-semibold text-gray-900 mt-1">{value}</p>
-        </div>
-        <div className="p-3 bg-gray-50 rounded-full">
-          {icon}
-        </div>
-      </div>
-      <div className="flex items-center mt-4">
-        {trend === 'up' ? (
-          <ArrowUpIcon className="h-4 w-4 text-green-500" />
-        ) : (
-          <ArrowDownIcon className="h-4 w-4 text-red-500" />
-        )}
-        <span className={`text-sm font-medium ml-1 ${
-          trend === 'up' ? 'text-green-600' : 'text-red-600'
-        }`}>
-          {change}
-        </span>
       </div>
     </div>
   );

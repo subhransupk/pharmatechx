@@ -1,113 +1,32 @@
 "use client";
 
-import { useState } from "react";
-import { BellIcon, SearchIcon, UserIcon, MenuIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Bell, Search, User } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Header() {
-  const [showNotifications, setShowNotifications] = useState(false);
-  const [showProfile, setShowProfile] = useState(false);
-
-  const notifications = [
-    {
-      id: 1,
-      title: "Low Stock Alert",
-      message: "Paracetamol 500mg is running low on stock.",
-      time: "5 minutes ago",
-      read: false,
-    },
-    {
-      id: 2,
-      title: "Expiry Alert",
-      message: "5 medicines will expire in the next 30 days.",
-      time: "1 hour ago",
-      read: false,
-    },
-    {
-      id: 3,
-      title: "New Order",
-      message: "New order #1234 has been placed.",
-      time: "3 hours ago",
-      read: true,
-    },
-  ];
-
   return (
-    <header className="bg-white border-b border-gray-200 py-4 px-6 shadow-sm">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center flex-1 max-w-md">
-          <div className="relative w-full">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <SearchIcon className="w-4 h-4 text-gray-400" />
-            </div>
-            <input
-              type="search"
-              className="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 transition-colors"
-              placeholder="Search medicines, orders..."
-            />
-          </div>
-        </div>
-
-        <div className="flex items-center space-x-4">
-          <button
-            onClick={() => setShowNotifications(!showNotifications)}
-            className="relative p-2 text-gray-700 hover:text-gray-900 focus:outline-none"
-          >
-            <BellIcon className="w-5 h-5" />
-            <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500"></span>
-          </button>
-
-          <div className="relative">
-            <button
-              onClick={() => setShowProfile(!showProfile)}
-              className="flex items-center space-x-2 focus:outline-none"
-            >
-              <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
-                <UserIcon className="w-5 h-5 text-gray-700" />
-              </div>
-              <span className="text-sm font-medium text-gray-900">John Doe</span>
-            </button>
-
-            {showProfile && (
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1">
-                <a href="#" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-50">Profile</a>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-50">Settings</a>
-                <a href="#" className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-50">Logout</a>
-              </div>
-            )}
-          </div>
+    <header className="flex h-16 items-center justify-between border-b border-gray-200 bg-white px-4">
+      <div className="flex flex-1 items-center">
+        <div className="relative w-full max-w-sm">
+          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Search..."
+            className="w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-4 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+          />
         </div>
       </div>
-
-      {showNotifications && (
-        <div className="absolute right-4 mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200">
-          <div className="p-4 border-b border-gray-200">
-            <h3 className="text-sm font-medium text-gray-900">Notifications</h3>
-          </div>
-          <div className="max-h-96 overflow-y-auto">
-            {notifications.map((notification) => (
-              <div
-                key={notification.id}
-                className={cn(
-                  "p-4 border-b border-gray-200 hover:bg-gray-50",
-                  !notification.read && "bg-blue-50"
-                )}
-              >
-                <div className="flex items-start">
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-gray-900">{notification.title}</p>
-                    <p className="text-sm text-gray-700 mt-1">{notification.message}</p>
-                    <p className="text-xs text-gray-500 mt-1">{notification.time}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="p-4 border-t border-gray-200">
-            <a href="#" className="text-sm text-primary-600 hover:text-primary-700">View all notifications</a>
-          </div>
-        </div>
-      )}
+      <div className="flex items-center space-x-4">
+        <Button variant="ghost" size="icon" className="relative">
+          <Bell className="h-5 w-5" />
+          <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+            3
+          </span>
+        </Button>
+        <Button variant="ghost" size="icon">
+          <User className="h-5 w-5" />
+        </Button>
+      </div>
     </header>
   );
 } 

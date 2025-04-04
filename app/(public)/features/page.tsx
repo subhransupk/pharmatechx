@@ -31,7 +31,7 @@ import {
   ArrowRight,
   ChevronRight
 } from "lucide-react";
-import { AnimatedSection, AnimatedHeading, AnimatedCard } from "../../components/ui/animated-section";
+import { AnimatedSection, AnimatedHeading, AnimatedCard } from "@/components/ui/animated-section";
 
 const features = [
   {
@@ -148,21 +148,23 @@ export default function FeaturesPage() {
       <section className="relative overflow-hidden bg-white py-20">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f9ff_1px,transparent_1px),linear-gradient(to_bottom,#f0f9ff_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]" />
         
-        <div className="container mx-auto px-4 relative">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
           <AnimatedHeading className="text-center max-w-3xl mx-auto">
-            <h1 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-              Powerful Features for Modern Pharmacies
-            </h1>
-            <p className="text-xl text-gray-600">
-              Discover how PharmatechX can transform your pharmacy operations with our comprehensive suite of features.
-            </p>
+            <div className="mb-6">
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+                Powerful Features for Modern Pharmacies
+              </h1>
+              <p className="text-xl text-gray-600 mt-4">
+                Discover how PharmatechX can transform your pharmacy operations with our comprehensive suite of features.
+              </p>
+            </div>
           </AnimatedHeading>
         </div>
       </section>
 
       {/* Features Grid */}
       <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <AnimatedCard key={feature.title} delay={index * 0.1}>
@@ -189,11 +191,11 @@ export default function FeaturesPage() {
 
       {/* Benefits Section */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <AnimatedHeading className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <div className="text-3xl font-bold text-gray-900 mb-4">
               Why Choose PharmatechX?
-            </h2>
+            </div>
             <p className="text-lg text-gray-600">
               Experience the benefits of modern pharmacy management
             </p>
@@ -217,11 +219,11 @@ export default function FeaturesPage() {
 
       {/* Analytics Preview */}
       <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <AnimatedHeading className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <div className="text-3xl font-bold text-gray-900 mb-4">
               Powerful Analytics Dashboard
-            </h2>
+            </div>
             <p className="text-lg text-gray-600">
               Make data-driven decisions with our comprehensive analytics
             </p>
@@ -258,7 +260,7 @@ export default function FeaturesPage() {
 
       {/* CTA Section */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <AnimatedCard>
             <Card className="bg-primary-600 p-12 text-center text-white">
               <h2 className="text-3xl font-bold mb-4">

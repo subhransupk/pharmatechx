@@ -1,6 +1,6 @@
 "use client";
 
-import { PricingSection } from "../../components/sections/pricing-section";
+import { PricingSection } from "@/components/sections/pricing-section";
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 

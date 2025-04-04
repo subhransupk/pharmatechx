@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "../components/ui/textarea";
+import { Textarea } from "@/components/ui/textarea";
 import { 
   Mail, 
   Phone, 
@@ -88,21 +88,21 @@ export default function ContactPage() {
       <section className="relative overflow-hidden bg-white py-20">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f9ff_1px,transparent_1px),linear-gradient(to_bottom,#f0f9ff_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]" />
         
-        <div className="container mx-auto px-4 relative">
-          <AnimatedHeading className="text-center max-w-3xl mx-auto">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
+          <AnimatedSection className="text-center max-w-3xl mx-auto">
             <h1 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
               Get in Touch
             </h1>
             <p className="text-xl text-gray-600">
               Have questions? We're here to help. Reach out to us through any of our channels.
             </p>
-          </AnimatedHeading>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Contact Info Section */}
       <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {contactInfo.map((info, index) => (
               <AnimatedCard key={info.title} delay={index * 0.1}>
@@ -121,7 +121,7 @@ export default function ContactPage() {
 
       {/* Contact Form & Map Section */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <AnimatedCard>
@@ -185,11 +185,11 @@ export default function ContactPage() {
 
       {/* FAQ Section */}
       <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <AnimatedHeading className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <div className="text-3xl font-bold text-gray-900 mb-4">
               Frequently Asked Questions
-            </h2>
+            </div>
             <p className="text-lg text-gray-600">
               Find answers to common questions
             </p>
@@ -234,7 +234,7 @@ export default function ContactPage() {
 
       {/* CTA Section */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <AnimatedCard>
             <Card className="bg-primary-600 p-12 text-center text-white">
               <h2 className="text-3xl font-bold mb-4">
