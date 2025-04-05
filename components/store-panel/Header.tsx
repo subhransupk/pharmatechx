@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bell, Search, User, LogOut, Settings, HelpCircle } from 'lucide-react';
+import { Bell, Search, User, LogOut, Settings, HelpCircle, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -108,6 +108,15 @@ const Header = () => {
                 </div>
               )}
             </div>
+
+            {/* Support Button */}
+            <Link 
+              href="/store-panel/support" 
+              className="flex items-center space-x-2 px-3 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors"
+            >
+              <MessageSquare className="w-5 h-5" />
+              <span className="font-medium">Support</span>
+            </Link>
 
             {/* User Profile Dropdown */}
             <div className="relative">
