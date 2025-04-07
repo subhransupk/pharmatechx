@@ -9,19 +9,22 @@ import {
   FileText,
   BarChart,
   HelpCircle,
-  Bell
+  Bell,
+  Receipt,
+  FileSpreadsheet,
+  MessageSquare
 } from 'lucide-react';
 
 const Sidebar = () => {
   const menuItems = [
-    { icon: LayoutDashboard, label: 'Dashboard', href: '/admin' },
+    { icon: LayoutDashboard, label: 'Dashboard', href: '/admin/dashboard' },
     { icon: Store, label: 'Stores', href: '/admin/stores' },
     { icon: CreditCard, label: 'Subscriptions', href: '/admin/subscriptions' },
-    { icon: FileText, label: 'Orders', href: '/admin/orders' },
-    { icon: BarChart, label: 'Analytics', href: '/admin/analytics' },
+    { icon: Receipt, label: 'Payments', href: '/admin/payments' },
+    { icon: FileText, label: 'Documents', href: '/admin/documents' },
+    { icon: FileSpreadsheet, label: 'Reports', href: '/admin/reports' },
     { icon: Users, label: 'Users', href: '/admin/users' },
-    { icon: Bell, label: 'Notifications', href: '/admin/notifications' },
-    { icon: HelpCircle, label: 'Support', href: '/admin/support' },
+    { icon: MessageSquare, label: 'Support', href: '/admin/support' },
     { icon: Settings, label: 'Settings', href: '/admin/settings' },
   ];
 
