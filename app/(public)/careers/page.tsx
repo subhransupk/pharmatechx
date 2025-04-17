@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Briefcase, Users, Heart, Sparkles } from "lucide-react";
+import Image from "next/image";
 
 const values = [
   {
@@ -32,43 +33,66 @@ export default function CareersPage() {
     <div className="bg-white">
       {/* Hero Section */}
       <div className="relative isolate overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8"
-          >
-            <div className="mt-24 sm:mt-32 lg:mt-16">
-              <span className="rounded-full bg-primary-600/10 px-3 py-1 text-sm font-semibold leading-6 text-primary-600 ring-1 ring-inset ring-primary-600/10">
-                Coming Soon
-              </span>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="mt-4 text-lg leading-8 text-gray-600"
+        <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+            <div className="flex flex-col justify-center">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8"
               >
-                Join us in revolutionizing pharmacy management
-              </motion.p>
+                <div className="mt-8 sm:mt-12 lg:mt-8">
+                  <span className="rounded-full bg-primary-600/10 px-3 py-1 text-sm font-semibold leading-6 text-primary-600 ring-1 ring-inset ring-primary-600/10">
+                    Coming Soon
+                  </span>
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="mt-4 text-lg leading-8 text-gray-600"
+                  >
+                    Join us in revolutionizing pharmacy management
+                  </motion.p>
+                </div>
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="mt-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
+                >
+                  Careers at PharmatechX
+                </motion.h1>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="mt-6 text-lg leading-8 text-gray-600"
+                >
+                  We're building the future of pharmacy management, and we're looking for talented individuals to join our team.
+                </motion.p>
+              </motion.div>
             </div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
+              className="relative"
             >
-              Careers at PharmatechX
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-6 text-lg leading-8 text-gray-600"
-            >
-              We're building the future of pharmacy management, and we're looking for talented individuals to join our team.
-            </motion.p>
-          </motion.div>
+              <div className="relative aspect-square overflow-hidden">
+                <Image
+                  src="/images/web-images/hero6.png"
+                  alt="Careers at PharmatechX"
+                  fill
+                  priority
+                  className="object-cover"
+                />
+              </div>
+              {/* Decorative Elements */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary-100 rounded-full opacity-50 blur-xl" />
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary-100 rounded-full opacity-30 blur-xl" />
+            </motion.div>
+          </div>
         </div>
       </div>
 

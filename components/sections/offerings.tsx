@@ -22,7 +22,7 @@ const offerings = [
     id: "inventory",
     title: "Smart Inventory Management",
     description: "AI-powered inventory tracking with automatic reordering, expiry alerts, and stock optimization. Keep your pharmacy well-stocked and efficient.",
-    image: "/images/offerings/inventory.jpg",
+    image: "/images/web-images/f1.png",
     icon: Package,
     features: [
       "Real-time stock tracking",
@@ -36,7 +36,7 @@ const offerings = [
     id: "billing",
     title: "Advanced Billing System",
     description: "Streamline your billing process with our comprehensive POS system. Generate invoices, handle payments, and manage customer records effortlessly.",
-    image: "/images/offerings/billing.jpg",
+    image: "/images/web-images/f2.png",
     icon: ClipboardList,
     features: [
       "Quick billing interface",
@@ -50,7 +50,7 @@ const offerings = [
     id: "analytics",
     title: "Business Analytics",
     description: "Make data-driven decisions with our powerful analytics dashboard. Track sales, monitor performance, and identify growth opportunities.",
-    image: "/images/offerings/analytics.jpg",
+    image: "/images/web-images/f4.png",
     icon: BarChart3,
     features: [
       "Sales analytics",
@@ -64,7 +64,7 @@ const offerings = [
     id: "staff",
     title: "Staff Management",
     description: "Efficiently manage your pharmacy staff with our comprehensive HR tools. Track attendance, manage shifts, and handle payroll all in one place.",
-    image: "/images/offerings/staff.jpg",
+    image: "/images/web-images/f5.png",
     icon: Users,
     features: [
       "Staff scheduling",
@@ -143,9 +143,12 @@ export function Offerings() {
                     </Button>
                   </div>
                   <div className="relative">
-                    <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary-100 to-primary-50 overflow-hidden">
-                      {/* Replace with actual image */}
-                      <div className="absolute inset-0 bg-primary-200 animate-pulse" />
+                    <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 relative">
+                      <img
+                        src={offering.image}
+                        alt={offering.title}
+                        className="absolute inset-0 h-full w-full object-contain p-4"
+                      />
                     </div>
                   </div>
                 </motion.div>

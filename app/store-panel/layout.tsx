@@ -1,8 +1,8 @@
 "use client";
 
 import { Inter } from "next/font/google";
-import Sidebar from "@/components/store-panel/Sidebar";
-import Header from "@/components/store-panel/Header";
+import Sidebar from "@/app/components/store-panel/Sidebar";
+import Header from "@/app/components/store-panel/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 

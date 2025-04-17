@@ -15,19 +15,19 @@ const features = [
     title: "Advanced Billing System",
     description: "Process transactions quickly with our intuitive billing system. Generate professional invoices, handle multiple payment methods, and manage customer records efficiently.",
     icon: Zap,
-    image: "/images/features/billing.jpg",
+    image: "/images/web-images/f2.png",
   },
   {
     title: "Compliance & Security",
     description: "Stay compliant with pharmacy regulations and maintain the highest security standards. Our system includes built-in compliance checks and secure data handling.",
     icon: Shield,
-    image: "/images/features/security.jpg",
+    image: "/images/web-images/f3.png",
   },
   {
     title: "Analytics & Reporting",
     description: "Make data-driven decisions with comprehensive analytics and reporting tools. Track sales trends, monitor inventory performance, and generate detailed reports.",
     icon: BarChart,
-    image: "/images/features/analytics.jpg",
+    image: "/images/web-images/f4.png",
   },
 ];
 
@@ -56,12 +56,12 @@ function FeatureRow({ feature, index }: { feature: typeof features[0]; index: nu
               className="relative"
               style={{ y: y2 }}
             >
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100">
-                <div className="h-full w-full bg-gradient-to-br from-primary-100 to-primary-50" />
-                {/* Replace with actual image */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <feature.icon className="h-24 w-24 text-primary-600 opacity-20" />
-                </div>
+              <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 relative">
+                <img
+                  src={feature.image}
+                  alt={feature.title}
+                  className="absolute inset-0 h-full w-full object-contain p-4"
+                />
               </div>
             </motion.div>
           )}
@@ -86,12 +86,12 @@ function FeatureRow({ feature, index }: { feature: typeof features[0]; index: nu
               className="relative"
               style={{ y: y2 }}
             >
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100">
-                <div className="h-full w-full bg-gradient-to-br from-primary-100 to-primary-50" />
-                {/* Replace with actual image */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <feature.icon className="h-24 w-24 text-primary-600 opacity-20" />
-                </div>
+              <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 relative">
+                <img
+                  src={feature.image}
+                  alt={feature.title}
+                  className="absolute inset-0 h-full w-full object-contain p-4"
+                />
               </div>
             </motion.div>
           )}

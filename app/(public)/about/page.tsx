@@ -27,6 +27,7 @@ import {
   Handshake
 } from "lucide-react";
 import { AnimatedSection, AnimatedHeading, AnimatedCard } from "../../components/ui/animated-section";
+import Image from "next/image";
 
 const values = [
   {
@@ -130,11 +131,14 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <AnimatedCard>
               <div className="relative">
-                <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary-50 to-white overflow-hidden border border-primary-100 shadow-xl">
-                  <div className="absolute inset-0 bg-primary-100/20 backdrop-blur-sm" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Target className="h-32 w-32 text-primary-600" />
-                  </div>
+                <div className="aspect-square rounded-2xl overflow-hidden border border-primary-100 shadow-xl">
+                  <Image
+                    src="/images/web-images/ab1.png"
+                    alt="Our Story"
+                    fill
+                    priority
+                    className="object-cover"
+                  />
                 </div>
                 {/* Decorative Elements */}
                 <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary-100 rounded-full opacity-50 blur-xl" />
