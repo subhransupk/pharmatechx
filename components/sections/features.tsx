@@ -9,7 +9,7 @@ const features = [
     title: "Smart Inventory Management",
     description: "Track your stock levels in real-time, set up automated reordering, and never run out of essential medicines. Our AI-powered system predicts demand and helps you maintain optimal inventory levels.",
     icon: Package,
-    image: "/images/features/inventory.jpg",
+    image: "/images/web-images/f1.png",
   },
   {
     title: "Advanced Billing System",

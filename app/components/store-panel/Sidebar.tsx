@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import {
   LayoutDashboard,
   Package,
@@ -112,10 +113,18 @@ export default function Sidebar() {
 
   return (
     <div className="flex h-full w-64 flex-col bg-white border-r border-gray-200">
-      <div className="flex h-16 items-center justify-center border-b border-gray-200">
-        <Link href="/store-panel" className="flex items-center space-x-2">
-          <Pill className="h-8 w-8 text-primary-600" />
-          <span className="text-xl font-bold text-gray-900">PharmatechX</span>
+      <div className="flex h-16 shrink-0 items-center border-b border-gray-200 px-6">
+        <Link href="/store-panel" className="flex items-center">
+          <div className="relative h-8 w-32">
+            <Image
+              src="/images/logo/final-logo.png"
+              alt="ShelfCure Logo"
+              fill
+              sizes="128px"
+              priority
+              className="object-contain"
+            />
+          </div>
         </Link>
       </div>
       <nav className="flex-1 space-y-1 overflow-y-auto p-4">

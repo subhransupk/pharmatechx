@@ -11,6 +11,7 @@ import { CounterSection } from "@/components/sections/counter";
 import { DemoSection } from "@/components/sections/demo";
 import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedSection, AnimatedHeading, AnimatedCard } from "@/components/ui/animated-section";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -114,13 +115,14 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="relative"
             >
-              <div className="relative aspect-square rounded-2xl bg-gradient-to-br from-primary-50 to-white overflow-hidden border border-primary-100 shadow-xl">
-                <div className="absolute inset-0 bg-primary-100/20 backdrop-blur-sm" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Package className="h-32 w-32 text-primary-600" />
-                </div>
-                {/* Animated gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-100/0 via-primary-100/10 to-primary-100/0 animate-gradient" />
+              <div className="relative aspect-square rounded-2xl overflow-hidden">
+                <Image
+                  src="/images/web-images/hero1.png"
+                  alt="Pharmacy Management System"
+                  fill
+                  priority
+                  className="object-cover"
+                />
               </div>
               {/* Decorative Elements */}
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary-100 rounded-full opacity-50 blur-xl" />

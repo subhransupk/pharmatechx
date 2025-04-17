@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -22,7 +23,15 @@ export default function Header() {
         <div className="flex items-center justify-between py-6">
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
-              <span className="text-xl font-bold text-primary">PharmatechX</span>
+              <Image
+                src="/images/logo/final-logo.png"
+                alt="PharmatechX Logo"
+                width={120}
+                height={40}
+                quality={100}
+                priority
+                className="h-10 w-auto"
+              />
             </Link>
           </div>
           <div className="flex lg:hidden">
