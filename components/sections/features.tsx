@@ -56,7 +56,7 @@ function FeatureRow({ feature, index }: { feature: typeof features[0]; index: nu
               className="relative"
               style={{ y: y2 }}
             >
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 relative">
+              <div className="aspect-[4/3] overflow-hidden rounded-2xl relative">
                 <img
                   src={feature.image}
                   alt={feature.title}
@@ -86,7 +86,7 @@ function FeatureRow({ feature, index }: { feature: typeof features[0]; index: nu
               className="relative"
               style={{ y: y2 }}
             >
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 relative">
+              <div className="aspect-[4/3] overflow-hidden rounded-2xl relative">
                 <img
                   src={feature.image}
                   alt={feature.title}
@@ -103,20 +103,26 @@ function FeatureRow({ feature, index }: { feature: typeof features[0]; index: nu
 
 export function Features() {
   return (
-    <section className="py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Powerful Features for Modern Pharmacies
+    <section className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:text-center">
+          <h2 className="text-base font-semibold leading-7 text-primary">
+            Everything you need
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
-            Everything you need to manage your pharmacy efficiently and grow your business
+          <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+            All-in-one platform
+          </p>
+          <p className="mt-6 text-lg leading-8 text-muted-foreground">
+            Everything you need to manage your pharmacy business in one place.
           </p>
         </div>
-
-        <div className="mt-12">
+        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
           {features.map((feature, index) => (
-            <FeatureRow key={feature.title} feature={feature} index={index} />
+            <FeatureRow
+              key={feature.title}
+              feature={feature}
+              index={index}
+            />
           ))}
         </div>
       </div>

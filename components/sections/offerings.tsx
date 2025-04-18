@@ -137,13 +137,9 @@ export function Offerings() {
                         </li>
                       ))}
                     </ul>
-                    <Button className="mt-4">
-                      Learn More
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
                   </div>
                   <div className="relative">
-                    <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 relative">
+                    <div className="aspect-[4/3] overflow-hidden rounded-2xl relative">
                       <img
                         src={offering.image}
                         alt={offering.title}

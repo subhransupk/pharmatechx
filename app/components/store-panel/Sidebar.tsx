@@ -86,13 +86,14 @@ export default function Sidebar() {
   return (
     <div className="flex h-full w-64 flex-col bg-white border-r border-gray-200">
       <div className="flex h-16 shrink-0 items-center justify-center border-b border-gray-200 px-6">
-        <Link href="/store-panel" className="flex items-center">
-          <div className="relative h-10 w-32">
+        <Link href="/store-panel" className="flex items-center h-full">
+          <div className="relative w-[13rem] h-full flex items-center">
             <Image
               src="/images/logo/final-logo.png"
               alt="PharmaTechX Logo"
-              width={120}
-              height={40}
+              width={520}
+              height={160}
+              quality={100}
               priority
               className="object-contain"
             />

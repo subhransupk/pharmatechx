@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PharmatechX - Modern Pharmacy Management",
+  title: "ShelfCure - Modern Pharmacy Management",
   description: "Streamline your pharmacy operations with our comprehensive management system.",
 };
 

@@ -150,7 +150,7 @@ export default function ContactPage() {
                     <label className="text-sm font-medium text-gray-700">Message</label>
                     <Textarea placeholder="Your message..." className="min-h-[150px]" />
                   </div>
-                  <Button className="w-full">
+                  <Button className="w-full text-white">
                     Send Message
                     <SendIcon className="ml-2 h-5 w-5" />
                   </Button>

@@ -34,7 +34,7 @@ export function DemoSection() {
       >
         <Button
           size="lg"
-          className="bg-primary-600 hover:bg-primary-700 shadow-lg rounded-full px-6 py-6"
+          className="bg-primary-600 hover:bg-primary-700 shadow-lg rounded-full px-6 py-6 text-white"
           onClick={() => setIsOpen(true)}
         >
           <Calendar className="h-5 w-5 mr-2" />
@@ -126,7 +126,7 @@ export function DemoSection() {
                     <div className="flex flex-col gap-3">
                       <Button
                         size="lg"
-                        className="w-full bg-primary-600 hover:bg-primary-700"
+                        className="w-full bg-primary-600 hover:bg-primary-700 text-white"
                         disabled={!selectedTime}
                       >
                         Confirm Time Slot
@@ -134,7 +134,7 @@ export function DemoSection() {
                       <Button
                         size="lg"
                         variant="outline"
-                        className="w-full"
+                        className="w-full text-white"
                       >
                         Watch Video Demo
                         <Video className="ml-2 h-5 w-5" />

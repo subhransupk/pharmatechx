@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import Image from "next/image";
 
 const navigation = {
   solutions: [
@@ -13,7 +14,6 @@ const navigation = {
     { name: "Help", href: "/help" },
     { name: "Documentation", href: "/docs" },
     { name: "Contact", href: "/contact" },
-    { name: "Status", href: "/status" },
   ],
   company: [
     { name: "About", href: "/about" },
@@ -60,7 +60,15 @@ export default function Footer() {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
             <Link href="/" className="-m-1.5 p-1.5">
-              <span className="text-2xl font-bold text-primary">PharmatechX</span>
+              <Image
+                src="/images/logo/final-logo.png"
+                alt="ShelfCure Logo"
+                width={180}
+                height={60}
+                quality={100}
+                priority
+                className="h-10 w-auto object-contain"
+              />
             </Link>
             <p className="text-sm leading-6 text-gray-600">
               Revolutionizing pharmacy management with modern technology.
@@ -137,7 +145,7 @@ export default function Footer() {
         </div>
         <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
           <p className="text-xs leading-5 text-gray-500">
-            &copy; {new Date().getFullYear()} PharmatechX. All rights reserved.
+            &copy; {new Date().getFullYear()} ShelfCure. All rights reserved.
           </p>
         </div>
       </div>

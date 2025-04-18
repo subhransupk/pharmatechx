@@ -81,7 +81,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="flex flex-col gap-4 sm:flex-row"
               >
-                <Button size="lg" className="bg-primary-600 hover:bg-primary-700 shadow-lg shadow-primary-200">
+                <Button size="lg" className="bg-primary-600 hover:bg-primary-700 shadow-lg shadow-primary-200 text-white">
                   Get Started Free
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -162,7 +162,7 @@ export default function Home() {
         <section className="bg-gray-50 py-20">
           <AnimatedHeading className="mb-12 text-center">
             <h2 className="mb-4 text-3xl font-bold text-gray-900">
-              How PharmatechX Works
+              How ShelfCure Works
             </h2>
             <p className="text-lg text-gray-600">
               Get started in minutes, not hours
@@ -213,7 +213,7 @@ export default function Home() {
                 Ready to Transform Your Pharmacy?
               </h2>
               <p className="mb-8 text-lg">
-                Join thousands of pharmacies already using PharmatechX
+                Join thousands of pharmacies already using ShelfCure
               </p>
               <Button size="lg" variant="secondary">
                 Start Free Trial
